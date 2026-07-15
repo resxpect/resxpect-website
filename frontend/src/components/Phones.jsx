@@ -128,7 +128,7 @@ export const PhoneAgreements = () => {
 /* ----------------- CENTER PHONE — Home / Reputation ------------------ */
 export const PhoneHome = () => {
     return (
-        <PhoneShell testid="phone-home" width={298} height={548}>
+        <PhoneShell testid="phone-home" width={275} height={548}>
             {/* Orange header */}
             <div style={{ background: "#F7931A", padding: "44px 20px 22px", color: "#fff", position: "relative" }}>
                 <div className="flex items-center justify-between text-white" style={{ fontSize: 11, fontWeight: 700, position: "absolute", top: 14, left: 20, right: 20 }}>

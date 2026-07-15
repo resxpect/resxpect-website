@@ -52,12 +52,12 @@ const Hero = () => {
                     {/* Right — three phones composition */}
                     <div className="col-span-12 lg:col-span-6 relative">
                         <div className="relative mx-auto flex items-end justify-center"
-                            style={{ minHeight: 680, maxWidth: 720 }}>
+                            style={{ minHeight: 620, maxWidth: 900 }}>
                             {/* Left phone — angled left, behind, dropped lower */}
                             <div className="absolute float-slow"
                                 style={{
-                                    left: 0, bottom: -24, zIndex: 1,
-                                    transform: "rotate(-12deg)",
+                                    left: -70, bottom: -13, zIndex: 1,
+                                    transform: "rotate(-6deg)",
                                     filter: "drop-shadow(0 20px 40px rgba(14,14,16,0.10))",
                                 }}>
                                 <PhoneAgreements />
@@ -65,18 +65,18 @@ const Hero = () => {
                             {/* Right phone — angled right, behind, dropped lower */}
                             <div className="absolute float-slow"
                                 style={{
-                                    right: 0, bottom: -24, zIndex: 1,
-                                    transform: "rotate(12deg)",
+                                    right: -70, bottom: -13, zIndex: 1,
+                                    transform: "rotate(6deg)",
                                     animationDelay: "1.5s",
                                     filter: "drop-shadow(0 20px 40px rgba(14,14,16,0.10))",
                                 }}>
                                 <PhoneLifecycle />
                             </div>
-                            {/* Center phone — front, largest, raised */}
+                            {/* Center phone — front, straight, raised */}
                             <div className="relative float-slow"
                                 style={{
                                     zIndex: 3, animationDelay: "0.7s",
-                                    bottom: 26,
+                                    bottom: 12,
                                     filter: "drop-shadow(0 30px 60px rgba(14,14,16,0.16))",
                                 }}>
                                 <PhoneHome />
