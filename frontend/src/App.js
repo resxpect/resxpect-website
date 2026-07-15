@@ -2,10 +2,9 @@ import React from "react";
 import "@/App.css";
 import Nav from "@/components/Nav";
 import Hero from "@/components/sections/Hero";
-import TrustProblem from "@/components/sections/TrustProblem";
+import Principles from "@/components/sections/Principles";
 import HowItWorks from "@/components/sections/HowItWorks";
-import ProtectedAgreements from "@/components/sections/ProtectedAgreements";
-import RespectPoints from "@/components/sections/RespectPoints";
+import Reputation from "@/components/sections/Reputation";
 import Disputes from "@/components/sections/Disputes";
 import FinalCTA from "@/components/sections/FinalCTA";
 
@@ -15,10 +14,9 @@ function App() {
             <Nav />
             <main>
                 <Hero />
-                <TrustProblem />
+                <Principles />
                 <HowItWorks />
-                <ProtectedAgreements />
-                <RespectPoints />
+                <Reputation />
                 <Disputes />
                 <FinalCTA />
             </main>

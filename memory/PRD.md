@@ -1,41 +1,60 @@
-# RESXPECT — Homepage (Institutional Light Refinement)
+# RESXPECT — Marketing Website
 
-## Current status
-Refined from cinematic dark protocol aesthetic to a clean, institutional light system that reads as premium financial infrastructure rather than a crypto dashboard.
+## Current status (Jan 2026)
+Production-quality marketing site rebuilt to match the uploaded RESXPECT visual reference.
 
-## Design system (v2)
-- **Background:** white primary + warm off-white `#F7F4EE` counterpoint sections
-- **Ink:** near-black `#0A0A0A` primary text, `#3A3733` secondary, `#6B6560` tertiary
-- **Accent:** RESXPECT orange `#FF5B1F` used only for markers, italic emphasis, active states, primary CTA
-- **Lines:** `rgba(10,10,10,0.08)` hairlines, no dark grid overlays
-- **Type:** Fraunces (editorial serif display) + IBM Plex Sans (body) + IBM Plex Mono (uppercase labels)
-- **Radius:** 4px, thin borders, architectural whitespace
+## Stack
+React 19 + Tailwind 3 + CRACO. Static frontend only — no backend, no marketplace, no auth, no database (per requirement).
 
-## Sections (unchanged structure, refined visuals)
-1. Hero — clean white, editorial headline, orange-italic "independent", concise new tagline, 2 CTAs, minimal 4-stage protocol visual (Agreement → Protected Payment → Evidence → Reputation)
-2. Chapter 01 — Trust problem (warm off-white)
-3. Chapter 02 — How it works (5 stages in a clean bordered grid, white)
-4. Chapter 03 — Protected agreements (agreement mock, warm)
-5. Chapter 04 — Respect Points & Skill Trust (identity card, white)
-6. Chapter 05 — Evidence-based disputes (timeline, warm)
-7. Final CTA — oversized editorial closer + footer (white)
+## Design system
+- **Brand orange:** `#F7931A` (RESXPECT accent, primary CTA, italic emphasis)
+- **Ink:** `#0E0E10` primary, `#3A3A3D` secondary, `#6B6B70` tertiary
+- **Backgrounds:** white primary, warm off-white `#FDF7EF` counterpoint
+- **Type:** Manrope (700/800 for display, 400/500/600 for body) + IBM Plex Mono (numeric)
+- **Card:** 16px radius, thin hairlines `rgba(14,14,16,0.10)`, soft ambient shadow
+- **Buttons:** 10px radius pill; orange primary, orange-outline secondary
 
-## Navigation
-`How It Works · Agreements · Reputation · Disputes · Sign in · Request access` (fixed, glass-blur on scroll).
+## Sections
+1. **Nav** — shield-with-handshake logomark; How It Works · Protected Agreements · Reputation · Disputes · About; orange Request Access CTA
+2. **Hero** — two-column: label pill + editorial headline (orange "independent work.") + copy + two CTAs + three orange checkmarked benefits · three-phone composition (center largest and straight; left tilted −8°; right tilted +8°; both angled outward; center overlaps both; no cropping; transparent surround)
+3. **Principles** — Built on principles that protect everyone (Protected Agreements, Portable Reputation, Fair Resolution)
+4. **How RESXPECT works** — five numbered steps horizontal (desktop) / vertical (mobile) with connecting rail
+5. **Reputation** — two panels (Respect Points, Skill Trust); no internal formulas surfaced
+6. **Disputes** — 4-step evidence → response → validators → payment flow
+7. **Final CTA + footer** — "People can meet anywhere. Trust is built on RESXPECT."
 
-## Removed
-- Dark hero background, radial glow, hero grid, film grain
-- Fake live stats, ledger sync, protocol version, ticker
-- Radar rings, corner brackets, decorative traveling dots
-- Cinematic dark mode across secondary sections
+## Component tree
+```
+src/
+├── App.js
+├── App.css
+├── index.css                       (design tokens, buttons, cards, animations)
+└── components/
+    ├── Logo.jsx                    (orange shield + white handshake + wordmark)
+    ├── Nav.jsx
+    ├── Phones.jsx                  (PhoneAgreements, PhoneHome, PhoneLifecycle)
+    └── sections/
+        ├── Hero.jsx
+        ├── Principles.jsx
+        ├── HowItWorks.jsx
+        ├── Reputation.jsx
+        ├── Disputes.jsx
+        └── FinalCTA.jsx
+```
 
-## Backlog / P1
-- Wire CTAs to a real waitlist backend (email capture)
-- `/how-it-works`, `/agreements`, `/reputation`, `/disputes` dedicated pages
-- Mobile polish pass (currently responsive; refine hero stack spacing)
-- Framer-motion scroll reveals per section
+## Responsive
+- Desktop ≥1024: two-column hero, 5-across steps
+- Tablet 768–1023: single-column hero, principles 1-col
+- Mobile <768: fully stacked, 5-step vertical rail
 
-## P2
-- Interactive "See a live agreement" walkthrough on hero
-- Case studies / studio logos strip
-- Localisation (i18n)
+## Explicitly not done (per requirement)
+- No marketplace page or navigation entry
+- No backend, no auth, no payment/escrow logic
+- No stock photos, no crypto/blockchain iconography, no shield logo other than the official uploaded mark
+- No fake live statistics, ticker, ledger sync or protocol version labels
+
+## Backlog
+- Wire CTAs to a real waitlist backend + email capture
+- Mobile hamburger menu for < lg viewports (nav links currently hidden below 1024px)
+- Framer-motion staggered scroll reveals per section
+- Dedicated pages for How It Works, Protected Agreements, Reputation, Disputes, Privacy, Terms, Contact

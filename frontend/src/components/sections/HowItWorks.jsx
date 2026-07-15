@@ -1,122 +1,68 @@
 import React from "react";
 
-const stages = [
-    {
-        n: "01",
-        title: "Structured agreement",
-        body: "Scope, deliverables, milestones and terms are captured in a single shared record that both parties sign.",
-    },
-    {
-        n: "02",
-        title: "Payment protection",
-        body: "Funds move into neutral escrow at signing. Release is defined by the agreement, not by either party alone.",
-    },
-    {
-        n: "03",
-        title: "Continuous evidence",
-        body: "Every artifact, message and hand-off is time-stamped against the agreement so the timeline is never in doubt.",
-    },
-    {
-        n: "04",
-        title: "Deterministic release",
-        body: "Milestones verify against evidence and payment releases automatically. Disputes follow a structured path.",
-    },
-    {
-        n: "05",
-        title: "Portable reputation",
-        body: "Both sides earn a verifiable record of trust that lives on your identity, not inside any single platform.",
-    },
+const steps = [
+    { n: "01", title: "Create an Agreement", body: "Both sides agree on scope, deadlines and evidence up front." },
+    { n: "02", title: "Protect Payment", body: "Funds are held safely and only released against defined outcomes." },
+    { n: "03", title: "Complete the Work", body: "Progress and deliverables are recorded against the agreement." },
+    { n: "04", title: "Verify the Outcome", body: "The other party confirms the work meets the agreed terms." },
+    { n: "05", title: "Build Reputation", body: "Successful completion contributes to a portable trust record." },
 ];
 
 const HowItWorks = () => {
     return (
-        <section
-            id="how"
-            data-testid="how-section"
-            className="section-white relative py-28 lg:py-36"
-        >
-            <div className="max-w-[1360px] mx-auto px-8 lg:px-12">
-                <div className="grid grid-cols-12 gap-10 mb-16">
-                    <div className="col-span-12 lg:col-span-6">
-                        <div className="label-mono mb-6 flex items-center gap-3">
-                            <span
-                                className="w-6 h-px"
-                                style={{ background: "var(--ink)" }}
-                            />
-                            Chapter 02 — How it works
-                        </div>
-                        <h2
-                            className="font-display"
-                            style={{
-                                fontSize: "clamp(36px, 4.8vw, 68px)",
-                                lineHeight: 1,
-                                letterSpacing: "-0.03em",
-                                color: "var(--ink)",
-                            }}
-                        >
-                            One protocol.{" "}
-                            <span style={{ fontStyle: "italic" }}>
-                                Five clear stages.
-                            </span>
-                        </h2>
-                    </div>
-                    <div className="col-span-12 lg:col-span-5 lg:col-start-8 self-end">
-                        <p
-                            style={{
-                                fontSize: 17,
-                                lineHeight: 1.55,
-                                fontWeight: 400,
-                                color: "var(--ink-2)",
-                                maxWidth: 480,
-                            }}
-                        >
-                            RESXPECT replaces contracts, invoices, evidence
-                            logs, dispute forms and review pages with a single
-                            continuous instrument that moves through five
-                            well-defined stages.
-                        </p>
+        <section id="how" data-testid="how-section" className="section-warm py-24 lg:py-32">
+            <div className="max-w-[1360px] mx-auto px-6 lg:px-10">
+                <div className="text-center max-w-[820px] mx-auto mb-16">
+                    <h2 className="font-display" style={{ fontSize: "clamp(32px, 4.4vw, 56px)", lineHeight: 1.05, color: "var(--ink)" }}>
+                        How <span style={{ color: "var(--orange)" }}>RESXPECT</span> works.
+                    </h2>
+                    <p style={{ fontSize: 17, lineHeight: 1.55, color: "var(--ink-2)", marginTop: 18 }}>
+                        Five clear steps that turn a handshake into a protected outcome.
+                    </p>
+                </div>
+
+                {/* Desktop horizontal */}
+                <div className="hidden lg:block relative">
+                    <div className="absolute top-[26px] left-[6%] right-[6%] h-px" style={{ background: "var(--line-strong)" }} />
+                    <div className="grid grid-cols-5 gap-6">
+                        {steps.map((s) => (
+                            <div key={s.n} className="relative text-center" data-testid={`how-step-${s.n}`}>
+                                <div className="mx-auto flex items-center justify-center relative z-10"
+                                    style={{
+                                        width: 52, height: 52, borderRadius: 26,
+                                        background: "#fff", border: "1.5px solid var(--orange)",
+                                        color: "var(--orange)", fontWeight: 800, fontSize: 15,
+                                        marginBottom: 20,
+                                    }}>
+                                    {s.n}
+                                </div>
+                                <h3 style={{ fontSize: 17, fontWeight: 800, color: "var(--ink)", marginBottom: 8, letterSpacing: "-0.01em" }}>
+                                    {s.title}
+                                </h3>
+                                <p style={{ fontSize: 13.5, lineHeight: 1.55, color: "var(--ink-2)", padding: "0 6px" }}>
+                                    {s.body}
+                                </p>
+                            </div>
+                        ))}
                     </div>
                 </div>
 
-                <div
-                    className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5"
-                    style={{ borderTop: "1px solid var(--line)" }}
-                >
-                    {stages.map((s, i) => (
-                        <div
-                            key={s.n}
-                            data-testid={`stage-${s.n}`}
-                            className="p-8 lg:p-10 relative"
-                            style={{
-                                borderRight:
-                                    i < stages.length - 1
-                                        ? "1px solid var(--line)"
-                                        : "none",
-                                borderBottom: "1px solid var(--line)",
-                            }}
-                        >
-                            <div className="label-mono mb-6">{s.n}</div>
-                            <h3
-                                className="font-display mb-4"
+                {/* Mobile vertical */}
+                <div className="lg:hidden space-y-5">
+                    {steps.map((s) => (
+                        <div key={s.n} className="card p-6 flex gap-4">
+                            <div className="flex-shrink-0 flex items-center justify-center"
                                 style={{
-                                    fontSize: 22,
-                                    lineHeight: 1.15,
-                                    letterSpacing: "-0.02em",
-                                    color: "var(--ink)",
-                                }}
-                            >
-                                {s.title}
-                            </h3>
-                            <p
-                                style={{
-                                    fontSize: 14.5,
-                                    lineHeight: 1.6,
-                                    fontWeight: 400,
-                                    color: "var(--ink-2)",
-                                }}
-                            >
-                                {s.body}
-                            </p>
+                                    width: 44, height: 44, borderRadius: 22,
+                                    background: "#fff", border: "1.5px solid var(--orange)",
+                                    color: "var(--orange)", fontWeight: 800,
+                                }}>
+                                {s.n}
+                            </div>
+                            <div>
+                                <h3 style={{ fontSize: 17, fontWeight: 800, color: "var(--ink)", marginBottom: 4 }}>{s.title}</h3>
+                                <p style={{ fontSize: 14, lineHeight: 1.55, color: "var(--ink-2)" }}>{s.body}</p>
+                            </div>
                         </div>
                     ))}
                 </div>
