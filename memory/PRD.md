@@ -1,55 +1,41 @@
-# RESXPECT — Premium Homepage Redesign
+# RESXPECT — Homepage (Institutional Light Refinement)
 
-## Original problem statement
-Redesign the RESXPECT homepage to feel substantially more premium, cinematic and distinctive — closer to a financial infrastructure / blockchain protocol / advanced technology company than a freelance marketplace. Remove startup aesthetic, rounded cards, empty whites and handshake emoji. Serious trust infrastructure for independent work.
+## Current status
+Refined from cinematic dark protocol aesthetic to a clean, institutional light system that reads as premium financial infrastructure rather than a crypto dashboard.
 
-## Architecture
-- **Stack:** React 19 + Tailwind 3 + CRA/CRACO. Static frontend, no backend needed (static demo).
-- **Type system:** Fraunces (display serif) + IBM Plex Sans (body) + IBM Plex Mono (labels).
-- **Palette:** Near-black `#0A0A0B` (ink), warm off-white `#F3EDE3` (paper), vivid `#FF5B1F` RESXPECT orange used sparingly as accent.
-- **Design tokens** in `src/index.css` as CSS variables; shadcn `--*` bridge preserved.
+## Design system (v2)
+- **Background:** white primary + warm off-white `#F7F4EE` counterpoint sections
+- **Ink:** near-black `#0A0A0A` primary text, `#3A3733` secondary, `#6B6560` tertiary
+- **Accent:** RESXPECT orange `#FF5B1F` used only for markers, italic emphasis, active states, primary CTA
+- **Lines:** `rgba(10,10,10,0.08)` hairlines, no dark grid overlays
+- **Type:** Fraunces (editorial serif display) + IBM Plex Sans (body) + IBM Plex Mono (uppercase labels)
+- **Radius:** 4px, thin borders, architectural whitespace
 
-## Component tree
-```
-src/
-├── App.js
-├── components/
-│   ├── Logo.jsx                (custom geometric handshake SVG + wordmark)
-│   ├── Nav.jsx                 (fixed, glass on scroll)
-│   ├── ProtocolVisual.jsx      (abstract protocol diagram — nodes, dashed lines, animated flow)
-│   └── sections/
-│       ├── Hero.jsx
-│       ├── TrustProblem.jsx
-│       ├── HowItWorks.jsx
-│       ├── ProtectedAgreements.jsx
-│       ├── RespectPoints.jsx
-│       ├── Disputes.jsx
-│       └── FinalCTA.jsx
-├── index.css                   (design system, tokens, primitives, animations)
-└── App.css
-```
+## Sections (unchanged structure, refined visuals)
+1. Hero — clean white, editorial headline, orange-italic "independent", concise new tagline, 2 CTAs, minimal 4-stage protocol visual (Agreement → Protected Payment → Evidence → Reputation)
+2. Chapter 01 — Trust problem (warm off-white)
+3. Chapter 02 — How it works (5 stages in a clean bordered grid, white)
+4. Chapter 03 — Protected agreements (agreement mock, warm)
+5. Chapter 04 — Respect Points & Skill Trust (identity card, white)
+6. Chapter 05 — Evidence-based disputes (timeline, warm)
+7. Final CTA — oversized editorial closer + footer (white)
 
-## Implemented (Jan 2026)
-- Minimal fixed navigation with glass-blur on scroll, editorial mono links, single primary CTA.
-- Cinematic dark hero with radial orange glow, hairline grid, film grain overlay, editorial Fraunces headline, italic orange accent word, protocol status bar, live ticker.
-- Custom protocol diagram (SVG): agreement → payment → central verify core → evidence → reputation with dashed animated lines and traveling orange dots.
-- Chapter 01 "Trust problem" — warm paper, editorial rows with hover accents.
-- Chapter 02 "How it works" — five-state protocol rail with node markers and progress shimmer.
-- Chapter 03 "Protected agreements" — realistic agreement document mock with milestones + signatures.
-- Chapter 04 "Respect Points & Skill Trust" — identity card with animated skill trust bars and tier badge.
-- Chapter 05 "Evidence over escalation" — dispute timeline mock with vertical rail.
-- Final CTA — oversized editorial closer with orange italic emphasis + footer.
-- Global smooth-scroll and anchor links wired for nav.
-- data-testid attributes on every interactive/critical element.
+## Navigation
+`How It Works · Agreements · Reputation · Disputes · Sign in · Request access` (fixed, glass-blur on scroll).
+
+## Removed
+- Dark hero background, radial glow, hero grid, film grain
+- Fake live stats, ledger sync, protocol version, ticker
+- Radar rings, corner brackets, decorative traveling dots
+- Cinematic dark mode across secondary sections
 
 ## Backlog / P1
-- Wire CTAs to a real waitlist backend + email capture.
-- Add scroll-triggered reveal animations (framer-motion) beyond initial fade-up.
-- Dedicated pages: `/protocol` (spec), `/security`, `/legal`.
-- Mobile refinements (currently responsive but hero layout stacks — polish spacing).
-- Case studies / studio logos strip.
+- Wire CTAs to a real waitlist backend (email capture)
+- `/how-it-works`, `/agreements`, `/reputation`, `/disputes` dedicated pages
+- Mobile polish pass (currently responsive; refine hero stack spacing)
+- Framer-motion scroll reveals per section
 
 ## P2
-- Motion-heavy protocol demo (interactive walkthrough of the 5 states).
-- Dark/light toggle for paper sections.
-- Real ledger animation with WebSocket-driven live stats.
+- Interactive "See a live agreement" walkthrough on hero
+- Case studies / studio logos strip
+- Localisation (i18n)

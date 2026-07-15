@@ -1,12 +1,7 @@
-/* RESXPECT root */
+/* RESXPECT root — light institutional */
 .App {
     min-height: 100vh;
-    background: var(--ink);
-    color: var(--paper);
+    background: var(--paper);
+    color: var(--ink);
     font-family: "IBM Plex Sans", ui-sans-serif, system-ui, sans-serif;
-}
-
-html {
-    scroll-behavior: smooth;
-    scroll-padding-top: 72px;
 }

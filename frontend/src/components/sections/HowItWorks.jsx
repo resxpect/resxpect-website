@@ -3,33 +3,28 @@ import React from "react";
 const stages = [
     {
         n: "01",
-        k: "Draft",
         title: "Structured agreement",
-        body: "Scope, deliverables, milestones and terms are codified into a single machine-readable contract both parties can sign.",
+        body: "Scope, deliverables, milestones and terms are captured in a single shared record that both parties sign.",
     },
     {
         n: "02",
-        k: "Lock",
         title: "Payment protection",
-        body: "Funds move into neutral escrow at signing. Nobody can withdraw unilaterally — release is defined by the agreement itself.",
+        body: "Funds move into neutral escrow at signing. Release is defined by the agreement, not by either party alone.",
     },
     {
         n: "03",
-        k: "Prove",
         title: "Continuous evidence",
-        body: "Every artifact, message and hand-off is time-sealed against the agreement. The truthful timeline builds itself.",
+        body: "Every artifact, message and hand-off is time-stamped against the agreement so the timeline is never in doubt.",
     },
     {
         n: "04",
-        k: "Settle",
         title: "Deterministic release",
-        body: "Milestones verify against evidence. Payment releases automatically. Disputes trigger a structured resolution path.",
+        body: "Milestones verify against evidence and payment releases automatically. Disputes follow a structured path.",
     },
     {
         n: "05",
-        k: "Carry",
         title: "Portable reputation",
-        body: "Both sides earn Respect Points and Skill Trust that live on your identity — not the platform's marketplace.",
+        body: "Both sides earn a verifiable record of trust that lives on your identity, not inside any single platform.",
     },
 ];
 
@@ -38,107 +33,92 @@ const HowItWorks = () => {
         <section
             id="how"
             data-testid="how-section"
-            className="section-ink relative py-32 lg:py-40 overflow-hidden"
+            className="section-white relative py-28 lg:py-36"
         >
-            {/* Subtle grid */}
-            <div className="absolute inset-0 opacity-40">
-                <div className="hero-grid" />
-            </div>
-
-            <div className="relative z-10 max-w-[1440px] mx-auto px-8 lg:px-12">
-                <div className="grid grid-cols-12 gap-8 mb-24">
-                    <div className="col-span-12 lg:col-span-5">
-                        <div className="label-mono text-white/55 mb-8 flex items-center gap-3">
-                            <span className="w-6 h-px bg-white/50" />
+            <div className="max-w-[1360px] mx-auto px-8 lg:px-12">
+                <div className="grid grid-cols-12 gap-10 mb-16">
+                    <div className="col-span-12 lg:col-span-6">
+                        <div className="label-mono mb-6 flex items-center gap-3">
+                            <span
+                                className="w-6 h-px"
+                                style={{ background: "var(--ink)" }}
+                            />
                             Chapter 02 — How it works
                         </div>
                         <h2
-                            className="font-display text-white"
+                            className="font-display"
                             style={{
-                                fontSize: "clamp(40px, 5.4vw, 80px)",
-                                lineHeight: 0.98,
+                                fontSize: "clamp(36px, 4.8vw, 68px)",
+                                lineHeight: 1,
                                 letterSpacing: "-0.03em",
+                                color: "var(--ink)",
                             }}
                         >
-                            One protocol.
-                            <br />
+                            One protocol.{" "}
                             <span style={{ fontStyle: "italic" }}>
-                                Five states.
+                                Five clear stages.
                             </span>
                         </h2>
                     </div>
-                    <div className="col-span-12 lg:col-span-6 lg:col-start-7 self-end">
+                    <div className="col-span-12 lg:col-span-5 lg:col-start-8 self-end">
                         <p
-                            className="text-white/60"
                             style={{
-                                fontSize: 18,
+                                fontSize: 17,
                                 lineHeight: 1.55,
-                                fontWeight: 300,
-                                maxWidth: 520,
+                                fontWeight: 400,
+                                color: "var(--ink-2)",
+                                maxWidth: 480,
                             }}
                         >
                             RESXPECT replaces contracts, invoices, evidence
                             logs, dispute forms and review pages with a single
-                            continuous instrument — moving deterministically
-                            through five well-defined states.
+                            continuous instrument that moves through five
+                            well-defined stages.
                         </p>
                     </div>
                 </div>
 
-                {/* Stage rail */}
-                <div className="relative">
-                    {/* horizontal rail line */}
-                    <div className="hidden lg:block absolute top-[60px] left-8 right-8 h-px bg-white/12" />
-                    <div className="hidden lg:block absolute top-[60px] left-8 h-px bg-[#FF5B1F] shimmer" style={{ width: "38%" }} />
-
-                    <div className="grid grid-cols-1 lg:grid-cols-5 gap-10 lg:gap-4">
-                        {stages.map((s, i) => (
-                            <div
-                                key={s.n}
-                                data-testid={`stage-${s.n}`}
-                                className="relative"
+                <div
+                    className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5"
+                    style={{ borderTop: "1px solid var(--line)" }}
+                >
+                    {stages.map((s, i) => (
+                        <div
+                            key={s.n}
+                            data-testid={`stage-${s.n}`}
+                            className="p-8 lg:p-10 relative"
+                            style={{
+                                borderRight:
+                                    i < stages.length - 1
+                                        ? "1px solid var(--line)"
+                                        : "none",
+                                borderBottom: "1px solid var(--line)",
+                            }}
+                        >
+                            <div className="label-mono mb-6">{s.n}</div>
+                            <h3
+                                className="font-display mb-4"
+                                style={{
+                                    fontSize: 22,
+                                    lineHeight: 1.15,
+                                    letterSpacing: "-0.02em",
+                                    color: "var(--ink)",
+                                }}
                             >
-                                {/* Node dot */}
-                                <div className="hidden lg:flex absolute -top-[6px] left-8 items-center justify-center">
-                                    <div
-                                        className="w-3 h-3 border border-white/30 bg-[#0a0a0b]"
-                                        style={{
-                                            outline:
-                                                i < 2
-                                                    ? "1px solid #FF5B1F"
-                                                    : "none",
-                                        }}
-                                    />
-                                </div>
-
-                                <div className="pt-[92px] lg:pt-[92px] px-6">
-                                    <div className="label-mono text-white/45 mb-3">
-                                        {s.n} · {s.k}
-                                    </div>
-                                    <h3
-                                        className="font-display text-white mb-4"
-                                        style={{
-                                            fontSize: 24,
-                                            lineHeight: 1.1,
-                                            letterSpacing: "-0.02em",
-                                        }}
-                                    >
-                                        {s.title}
-                                    </h3>
-                                    <p
-                                        className="text-white/55"
-                                        style={{
-                                            fontSize: 14.5,
-                                            lineHeight: 1.6,
-                                            fontWeight: 300,
-                                        }}
-                                    >
-                                        {s.body}
-                                    </p>
-                                </div>
-                            </div>
-                        ))}
-                    </div>
+                                {s.title}
+                            </h3>
+                            <p
+                                style={{
+                                    fontSize: 14.5,
+                                    lineHeight: 1.6,
+                                    fontWeight: 400,
+                                    color: "var(--ink-2)",
+                                }}
+                            >
+                                {s.body}
+                            </p>
+                        </div>
+                    ))}
                 </div>
             </div>
         </section>

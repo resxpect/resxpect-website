@@ -14,122 +14,128 @@ const Disputes = () => {
         <section
             id="disputes"
             data-testid="disputes-section"
-            className="section-paper relative py-32 lg:py-40"
+            className="section-warm relative py-28 lg:py-36"
         >
-            <div className="relative z-10 max-w-[1440px] mx-auto px-8 lg:px-12">
+            <div className="max-w-[1360px] mx-auto px-8 lg:px-12">
                 <div className="grid grid-cols-12 gap-12">
-                    {/* Left: description */}
                     <div className="col-span-12 lg:col-span-5">
-                        <div className="label-mono text-[color:var(--ink-warm-2)] mb-8 flex items-center gap-3">
-                            <span className="w-6 h-px bg-[color:var(--ink-warm)]" />
+                        <div className="label-mono mb-6 flex items-center gap-3">
+                            <span
+                                className="w-6 h-px"
+                                style={{ background: "var(--ink)" }}
+                            />
                             Chapter 05 — Dispute resolution
                         </div>
                         <h2
                             className="font-display mb-8"
                             style={{
-                                fontSize: "clamp(36px, 4.6vw, 64px)",
+                                fontSize: "clamp(32px, 4.2vw, 56px)",
                                 lineHeight: 1,
                                 letterSpacing: "-0.03em",
-                                color: "var(--ink-warm)",
+                                color: "var(--ink)",
                             }}
                         >
-                            Evidence over
-                            <br />
+                            Evidence over{" "}
                             <span style={{ fontStyle: "italic" }}>
                                 escalation.
                             </span>
                         </h2>
                         <p
-                            className="text-[color:var(--ink-warm-2)] mb-8"
+                            className="mb-8"
                             style={{
                                 fontSize: 17,
                                 lineHeight: 1.6,
-                                fontWeight: 300,
+                                fontWeight: 400,
+                                color: "var(--ink-2)",
+                                maxWidth: 480,
                             }}
                         >
                             When something breaks, RESXPECT compiles the
-                            truthful timeline in seconds. A panel of verified
-                            arbitrators reviews the sealed record and issues a
-                            binding resolution — typically within an
-                            afternoon, not a lawsuit.
+                            timeline in seconds. A panel of verified
+                            arbitrators reviews the record and issues a
+                            binding resolution — typically within hours, not
+                            months.
                         </p>
 
-                        <div className="grid grid-cols-3 gap-6 pt-6 border-t border-[color:var(--paper-line-strong)]">
+                        <div
+                            className="grid grid-cols-3 gap-6 pt-6"
+                            style={{ borderTop: "1px solid var(--line)" }}
+                        >
                             {[
                                 ["4.2h", "Median resolution"],
-                                ["99.7%", "Timeline integrity"],
-                                ["0.8%", "Escalation rate"],
+                                ["Verified", "Timeline record"],
+                                ["Binding", "Panel decision"],
                             ].map(([n, l]) => (
                                 <div key={l}>
                                     <div
                                         className="font-display"
                                         style={{
-                                            fontSize: 32,
+                                            fontSize: 26,
                                             letterSpacing: "-0.02em",
-                                            color: "var(--ink-warm)",
+                                            color: "var(--ink)",
                                         }}
                                     >
                                         {n}
                                     </div>
-                                    <div className="label-mono text-[color:var(--ink-warm-2)] mt-1">
-                                        {l}
-                                    </div>
+                                    <div className="label-mono mt-1">{l}</div>
                                 </div>
                             ))}
                         </div>
                     </div>
 
-                    {/* Right: timeline */}
                     <div className="col-span-12 lg:col-span-6 lg:col-start-7">
-                        <div className="edge-paper bg-white p-8 relative">
+                        <div className="edge p-8 relative">
                             <div className="flex items-center justify-between mb-8">
-                                <div className="flex items-center gap-3 label-mono text-[color:var(--ink-warm-2)]">
-                                    <span className="w-1.5 h-1.5 bg-[#FF5B1F]" />
+                                <div className="flex items-center gap-3 label-mono">
+                                    <span className="marker" />
                                     Dispute · #A1207
                                 </div>
-                                <div className="label-mono text-[#FF5B1F]">
+                                <div
+                                    className="label-mono"
+                                    style={{ color: "var(--orange)" }}
+                                >
                                     Resolved · 4h 12m
                                 </div>
                             </div>
 
                             <div className="relative">
-                                {/* vertical rail */}
-                                <div className="absolute top-3 bottom-3 left-[86px] w-px bg-[color:var(--paper-line-strong)]" />
-
+                                <div
+                                    className="absolute top-3 bottom-3 left-[80px] w-px"
+                                    style={{ background: "var(--line)" }}
+                                />
                                 <ul className="space-y-6">
                                     {timeline.map(([t, title, meta], i) => (
                                         <li
                                             key={i}
-                                            className="grid grid-cols-[80px_16px_1fr] gap-4 items-start"
+                                            className="grid grid-cols-[76px_14px_1fr] gap-4 items-start"
                                         >
-                                            <span className="label-mono text-[color:var(--ink-warm-2)] pt-1">
+                                            <span className="label-mono pt-1">
                                                 {t}
                                             </span>
-                                            <span className="mt-1.5 w-3 h-3 border border-[color:var(--ink-warm)] bg-white relative z-10">
-                                                {i === timeline.length - 1 && (
-                                                    <span className="block absolute inset-0.5 bg-[#FF5B1F]" />
-                                                )}
-                                            </span>
+                                            <span
+                                                className="mt-1.5 w-3 h-3 relative z-10"
+                                                style={{
+                                                    background:
+                                                        i ===
+                                                        timeline.length - 1
+                                                            ? "var(--orange)"
+                                                            : "white",
+                                                    border: `1px solid ${i === timeline.length - 1 ? "var(--orange)" : "var(--ink)"}`,
+                                                }}
+                                            />
                                             <div>
-                                                <div className="text-[color:var(--ink-warm)]">
+                                                <div
+                                                    style={{ color: "var(--ink)" }}
+                                                >
                                                     {title}
                                                 </div>
-                                                <div className="label-mono text-[color:var(--ink-warm-2)] mt-1">
+                                                <div className="label-mono mt-1">
                                                     {meta}
                                                 </div>
                                             </div>
                                         </li>
                                     ))}
                                 </ul>
-                            </div>
-
-                            <div className="mt-8 pt-6 border-t border-[color:var(--paper-line-strong)] flex items-center justify-between">
-                                <div className="label-mono text-[color:var(--ink-warm-2)]">
-                                    Signed by panel · 3 arbitrators
-                                </div>
-                                <div className="label-mono text-[color:var(--ink-warm)]">
-                                    Ledger 0x9f…12c
-                                </div>
                             </div>
                         </div>
                     </div>

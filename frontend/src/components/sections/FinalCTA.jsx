@@ -6,102 +6,106 @@ const FinalCTA = () => {
         <section
             id="request"
             data-testid="final-cta-section"
-            className="section-ink relative overflow-hidden"
+            className="section-white relative"
         >
-            {/* Ambient glow */}
-            <div
-                className="absolute inset-0 pointer-events-none"
-                style={{
-                    background:
-                        "radial-gradient(60% 60% at 50% 100%, rgba(255,91,31,0.20) 0%, rgba(255,91,31,0) 60%)",
-                }}
-            />
-            <div className="absolute inset-0 opacity-30 pointer-events-none">
-                <div className="hero-grid" />
-            </div>
-
-            <div className="relative z-10 max-w-[1440px] mx-auto px-8 lg:px-12 py-32 lg:py-48">
-                <div className="max-w-[1000px]">
-                    <div className="label-mono text-white/55 mb-10 flex items-center gap-3">
-                        <span className="marker pulse-dot" />
+            <div className="max-w-[1360px] mx-auto px-8 lg:px-12 py-28 lg:py-40">
+                <div className="max-w-[900px]">
+                    <div className="label-mono mb-8 flex items-center gap-3">
+                        <span className="marker" />
                         Enter the protocol
                     </div>
                     <h2
-                        className="font-display text-white mb-10"
+                        className="font-display mb-10"
                         style={{
-                            fontSize: "clamp(56px, 9vw, 148px)",
-                            lineHeight: 0.88,
+                            fontSize: "clamp(48px, 8vw, 128px)",
+                            lineHeight: 0.9,
                             letterSpacing: "-0.04em",
+                            color: "var(--ink)",
                         }}
                     >
-                        Independent
-                        <br />
-                        work,{" "}
+                        Independent work,{" "}
                         <span
                             style={{
                                 fontStyle: "italic",
-                                color: "#FF5B1F",
-                                fontWeight: 300,
+                                color: "var(--orange)",
                             }}
                         >
                             respected
-                        </span>
-                        <br />
+                        </span>{" "}
                         by default.
                     </h2>
                     <p
-                        className="text-white/60 max-w-[560px] mb-14"
                         style={{
                             fontSize: 18,
                             lineHeight: 1.55,
-                            fontWeight: 300,
+                            fontWeight: 400,
+                            color: "var(--ink-2)",
+                            maxWidth: 540,
+                            marginBottom: 44,
                         }}
                     >
                         RESXPECT is opening access in cohorts. Studios,
                         collectives and independent operators can request
-                        early access to the protocol below.
+                        early access below.
                     </p>
 
-                    <div className="flex flex-wrap items-center gap-4">
+                    <div className="flex flex-wrap items-center gap-3">
                         <a
                             data-testid="final-cta-primary"
                             href="#request"
-                            className="btn-primary"
+                            className="btn-primary is-orange"
                         >
                             Request early access
                             <span aria-hidden>→</span>
                         </a>
                         <a
                             data-testid="final-cta-secondary"
-                            href="#spec"
+                            href="#how"
                             className="btn-ghost"
                         >
-                            Read the whitepaper
+                            Read how it works
                         </a>
                     </div>
                 </div>
             </div>
 
-            {/* Footer */}
-            <footer className="relative z-10 border-t border-white/8">
-                <div className="max-w-[1440px] mx-auto px-8 lg:px-12 py-10 flex flex-col md:flex-row items-start md:items-center justify-between gap-6">
-                    <Logo size={22} />
-                    <div className="flex flex-wrap items-center gap-8 label-mono text-white/45">
-                        <a href="#spec" className="hover:text-white transition">
-                            Specification
+            <footer style={{ borderTop: "1px solid var(--line)" }}>
+                <div className="max-w-[1360px] mx-auto px-8 lg:px-12 py-10 flex flex-col md:flex-row items-start md:items-center justify-between gap-6">
+                    <Logo size={26} />
+                    <div className="flex flex-wrap items-center gap-8 label-mono">
+                        <a href="#how" className="hover:text-black transition">
+                            How it works
                         </a>
-                        <a href="#security" className="hover:text-white transition">
-                            Security
+                        <a
+                            href="#agreements"
+                            className="hover:text-black transition"
+                        >
+                            Agreements
                         </a>
-                        <a href="#legal" className="hover:text-white transition">
-                            Legal
+                        <a
+                            href="#reputation"
+                            className="hover:text-black transition"
+                        >
+                            Reputation
                         </a>
-                        <a href="#contact" className="hover:text-white transition">
+                        <a
+                            href="#disputes"
+                            className="hover:text-black transition"
+                        >
+                            Disputes
+                        </a>
+                        <a
+                            href="#contact"
+                            className="hover:text-black transition"
+                        >
                             Contact
                         </a>
                     </div>
-                    <div className="label-mono text-white/35">
-                        © 2026 · Protocol v1.4
+                    <div
+                        className="label-mono"
+                        style={{ color: "var(--ink-3)" }}
+                    >
+                        © 2026 RESXPECT
                     </div>
                 </div>
             </footer>
