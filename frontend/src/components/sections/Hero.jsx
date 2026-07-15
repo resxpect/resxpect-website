@@ -52,30 +52,31 @@ const Hero = () => {
                     {/* Right — three phones composition */}
                     <div className="col-span-12 lg:col-span-6 relative">
                         <div className="relative mx-auto flex items-end justify-center"
-                            style={{ minHeight: 620, maxWidth: 640 }}>
-                            {/* Left phone — angled left, behind */}
+                            style={{ minHeight: 680, maxWidth: 720 }}>
+                            {/* Left phone — angled left, behind, dropped lower */}
                             <div className="absolute float-slow"
                                 style={{
-                                    left: "2%", bottom: 20, zIndex: 1,
-                                    transform: "rotate(-8deg)",
+                                    left: 0, bottom: -24, zIndex: 1,
+                                    transform: "rotate(-12deg)",
                                     filter: "drop-shadow(0 20px 40px rgba(14,14,16,0.10))",
                                 }}>
                                 <PhoneAgreements />
                             </div>
-                            {/* Right phone — angled right, behind */}
+                            {/* Right phone — angled right, behind, dropped lower */}
                             <div className="absolute float-slow"
                                 style={{
-                                    right: "2%", bottom: 20, zIndex: 1,
-                                    transform: "rotate(8deg)",
+                                    right: 0, bottom: -24, zIndex: 1,
+                                    transform: "rotate(12deg)",
                                     animationDelay: "1.5s",
                                     filter: "drop-shadow(0 20px 40px rgba(14,14,16,0.10))",
                                 }}>
                                 <PhoneLifecycle />
                             </div>
-                            {/* Center phone — front, largest */}
+                            {/* Center phone — front, largest, raised */}
                             <div className="relative float-slow"
                                 style={{
                                     zIndex: 3, animationDelay: "0.7s",
+                                    bottom: 26,
                                     filter: "drop-shadow(0 30px 60px rgba(14,14,16,0.16))",
                                 }}>
                                 <PhoneHome />

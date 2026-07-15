@@ -80,7 +80,7 @@ export const PhoneAgreements = () => {
         { title: "App development", status: "Completed", due: "Completed 3 days ago", amt: "$1,200" },
     ];
     return (
-        <PhoneShell testid="phone-agreements" width={240} height={500}>
+        <PhoneShell testid="phone-agreements" width={270} height={500}>
             <StatusBar />
             <div className="px-5 pt-3 pb-3 flex items-center gap-3">
                 <div style={{ width: 24, height: 24, borderRadius: 12, background: "#f4f4f6", display: "flex", alignItems: "center", justifyContent: "center", fontSize: 12, color: "#0e0e10" }}>‹</div>
@@ -128,7 +128,7 @@ export const PhoneAgreements = () => {
 /* ----------------- CENTER PHONE — Home / Reputation ------------------ */
 export const PhoneHome = () => {
     return (
-        <PhoneShell testid="phone-home" width={264} height={548}>
+        <PhoneShell testid="phone-home" width={298} height={548}>
             {/* Orange header */}
             <div style={{ background: "#F7931A", padding: "44px 20px 22px", color: "#fff", position: "relative" }}>
                 <div className="flex items-center justify-between text-white" style={{ fontSize: 11, fontWeight: 700, position: "absolute", top: 14, left: 20, right: 20 }}>
@@ -155,13 +155,9 @@ export const PhoneHome = () => {
                 {/* RP card */}
                 <div style={{ padding: 12, border: "1px solid #f0f0f2", borderRadius: 14 }}>
                     <div style={{ fontSize: 10.5, color: "#6b6b70", fontWeight: 600 }}>Respect Points</div>
-                    <div style={{ fontSize: 30, fontWeight: 800, color: "#0e0e10", letterSpacing: "-0.02em", marginTop: 2 }}>1,240</div>
-                    <div className="flex items-center justify-between mt-2">
-                        <span style={{ fontSize: 10, fontWeight: 700, color: "#0e0e10" }}>Level 3</span>
-                        <span style={{ fontSize: 9, color: "#9a9aa0" }}>Trusted contributor</span>
-                    </div>
-                    <div style={{ marginTop: 6, height: 4, background: "#f4f4f6", borderRadius: 4, overflow: "hidden" }}>
-                        <div style={{ width: "62%", height: "100%", background: "#F7931A" }} />
+                    <div style={{ fontSize: 30, fontWeight: 800, color: "#0e0e10", letterSpacing: "-0.02em", marginTop: 2 }}>56 RP</div>
+                    <div className="flex items-center mt-2">
+                        <span style={{ fontSize: 10, fontWeight: 700, color: "#F7931A" }}>Level 3</span>
                     </div>
                 </div>
                 {/* Active agreement */}
@@ -218,7 +214,7 @@ export const PhoneLifecycle = () => {
         ["Completed", false],
     ];
     return (
-        <PhoneShell testid="phone-lifecycle" width={240} height={500}>
+        <PhoneShell testid="phone-lifecycle" width={270} height={500}>
             <StatusBar />
             <div className="px-5 pt-3 pb-2 flex items-center justify-between">
                 <div style={{ fontSize: 13, fontWeight: 700 }}>Agreement</div>
