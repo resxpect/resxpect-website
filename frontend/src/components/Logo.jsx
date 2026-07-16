@@ -2,12 +2,20 @@ import React from "react";
 
 /**
  * RESXPECT — uses the official uploaded logomark (webp) as-is.
- * No recreation or modification.
+ * Icon and wordmark sizes are prop-driven so the header lockup can
+ * be enlarged without affecting other usages (e.g. footer).
  */
-const Logo = ({ size = 32, className = "", withWordmark = true }) => {
+const Logo = ({
+    size = 32,
+    wordmarkSize = 20,
+    gap = 10,
+    className = "",
+    withWordmark = true,
+}) => {
     return (
         <div
-            className={`inline-flex items-center gap-2.5 ${className}`}
+            className={`inline-flex items-center ${className}`}
+            style={{ gap }}
             data-testid="resxpect-logo"
         >
             <img
@@ -22,9 +30,10 @@ const Logo = ({ size = 32, className = "", withWordmark = true }) => {
                     style={{
                         fontFamily: "Manrope, sans-serif",
                         fontWeight: 800,
-                        fontSize: 20,
+                        fontSize: wordmarkSize,
                         letterSpacing: "-0.01em",
                         color: "var(--ink)",
+                        lineHeight: 1,
                     }}
                 >
                     RESXPECT
