@@ -2,7 +2,7 @@ import React from "react";
 
 const Hero = () => {
     return (
-        <section id="top" data-testid="hero-section" className="section-white relative pt-[128px] pb-20 lg:pb-32 overflow-hidden">
+        <section id="top" data-testid="hero-section" className="section-white relative pt-[128px] pb-20 lg:pb-32">
             {/* Brand watermark — behind phone image, right side only */}
             <img
                 src="/assets/resxpect-mark.webp"
@@ -11,12 +11,12 @@ const Hero = () => {
                 data-testid="hero-watermark"
                 className="hidden lg:block pointer-events-none select-none absolute"
                 style={{
-                    right: "-40px",
+                    right: -40,
                     top: "50%",
                     transform: "translateY(-50%)",
-                    width: 480,
+                    width: 460,
                     height: "auto",
-                    opacity: 0.05,
+                    opacity: 0.08,
                     zIndex: 0,
                 }}
             />
