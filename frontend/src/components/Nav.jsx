@@ -28,7 +28,7 @@ const Nav = () => {
             }}
         >
             <div className="max-w-[1360px] mx-auto px-6 lg:px-10 flex items-center justify-between h-[76px]">
-                <a href="#top" data-testid="nav-brand"><Logo markHeight={32} wordmarkSize={23} gap={8} /></a>
+                <a href="#top" data-testid="nav-brand"><Logo markHeight={26} wordmarkSize={20} gap={7} /></a>
                 <ul className="hidden lg:flex items-center gap-9">
                     {links.map((l) => (
                         <li key={l.href}>
