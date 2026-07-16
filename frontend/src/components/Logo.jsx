@@ -1,12 +1,12 @@
 import React from "react";
 
 /**
- * RESXPECT — uses the official uploaded logomark (webp) as-is.
- * Icon and wordmark sizes are prop-driven so the header lockup can
- * be enlarged without affecting other usages (e.g. footer).
+ * RESXPECT logo lockup — uses the tight-cropped handshake mark.
+ * `markHeight` controls the visible handshake height in px; width scales
+ * proportionally from the source aspect ratio.
  */
 const Logo = ({
-    size = 32,
+    markHeight = 24,
     wordmarkSize = 20,
     gap = 10,
     className = "",
@@ -19,11 +19,14 @@ const Logo = ({
             data-testid="resxpect-logo"
         >
             <img
-                src="/assets/resxpect-logo.webp"
+                src="/assets/resxpect-mark.webp"
                 alt="RESXPECT"
-                width={size}
-                height={size}
-                style={{ display: "block", objectFit: "contain" }}
+                style={{
+                    height: markHeight,
+                    width: "auto",
+                    display: "block",
+                    objectFit: "contain",
+                }}
             />
             {withWordmark && (
                 <span

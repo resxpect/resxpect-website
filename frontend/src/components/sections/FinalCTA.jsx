@@ -34,7 +34,7 @@ const FinalCTA = () => {
 
             <footer id="about" style={{ borderTop: "1px solid var(--line)" }}>
                 <div className="max-w-[1360px] mx-auto px-6 lg:px-10 py-12 flex flex-col md:flex-row items-start md:items-center justify-between gap-8">
-                    <Logo size={28} />
+                    <Logo markHeight={26} wordmarkSize={18} />
                     <div className="flex flex-wrap items-center gap-x-8 gap-y-3">
                         {[
                             ["How It Works", "#how"],

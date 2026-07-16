@@ -2,8 +2,25 @@ import React from "react";
 
 const Hero = () => {
     return (
-        <section id="top" data-testid="hero-section" className="section-white relative pt-[128px] pb-20 lg:pb-32">
-            <div className="max-w-[1360px] mx-auto px-6 lg:px-10">
+        <section id="top" data-testid="hero-section" className="section-white relative pt-[128px] pb-20 lg:pb-32 overflow-hidden">
+            {/* Brand watermark — behind phone image, right side only */}
+            <img
+                src="/assets/resxpect-mark.webp"
+                alt=""
+                aria-hidden="true"
+                data-testid="hero-watermark"
+                className="hidden lg:block pointer-events-none select-none absolute"
+                style={{
+                    right: "-40px",
+                    top: "50%",
+                    transform: "translateY(-50%)",
+                    width: 480,
+                    height: "auto",
+                    opacity: 0.05,
+                    zIndex: 0,
+                }}
+            />
+            <div className="max-w-[1360px] mx-auto px-6 lg:px-10 relative" style={{ zIndex: 1 }}>
                 <div className="grid grid-cols-12 gap-8 lg:gap-12 items-center">
                     {/* Left */}
                     <div className="col-span-12 lg:col-span-6 fade-up">
