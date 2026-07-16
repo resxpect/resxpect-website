@@ -1,5 +1,4 @@
 import React from "react";
-import { PhoneAgreements, PhoneHome, PhoneLifecycle } from "../Phones";
 
 const Hero = () => {
     return (
@@ -49,39 +48,21 @@ const Hero = () => {
                         </div>
                     </div>
 
-                    {/* Right — three phones composition */}
-                    <div className="col-span-12 lg:col-span-6 relative">
-                        <div className="relative mx-auto flex items-end justify-center"
-                            style={{ minHeight: 620, maxWidth: 900 }}>
-                            {/* Left phone — angled left, behind, dropped lower */}
-                            <div className="absolute float-slow"
-                                style={{
-                                    left: -70, bottom: -13, zIndex: 1,
-                                    transform: "rotate(-6deg)",
-                                    filter: "drop-shadow(0 20px 40px rgba(14,14,16,0.10))",
-                                }}>
-                                <PhoneAgreements />
-                            </div>
-                            {/* Right phone — angled right, behind, dropped lower */}
-                            <div className="absolute float-slow"
-                                style={{
-                                    right: -70, bottom: -13, zIndex: 1,
-                                    transform: "rotate(6deg)",
-                                    animationDelay: "1.5s",
-                                    filter: "drop-shadow(0 20px 40px rgba(14,14,16,0.10))",
-                                }}>
-                                <PhoneLifecycle />
-                            </div>
-                            {/* Center phone — front, straight, raised */}
-                            <div className="relative float-slow"
-                                style={{
-                                    zIndex: 3, animationDelay: "0.7s",
-                                    bottom: 12,
-                                    filter: "drop-shadow(0 30px 60px rgba(14,14,16,0.16))",
-                                }}>
-                                <PhoneHome />
-                            </div>
-                        </div>
+                    {/* Right — single mock image */}
+                    <div className="col-span-12 lg:col-span-6 flex justify-center lg:justify-end">
+                        <img
+                            src="/assets/hero-mock.png"
+                            alt="RESXPECT product preview"
+                            data-testid="hero-mock-image"
+                            className="w-full h-auto"
+                            style={{
+                                maxWidth: 700,
+                                objectFit: "contain",
+                                background: "transparent",
+                                border: "none",
+                                boxShadow: "none",
+                            }}
+                        />
                     </div>
                 </div>
             </div>
