@@ -27,8 +27,8 @@ const Nav = () => {
                 borderBottom: scrolled ? "1px solid var(--line)" : "1px solid transparent",
             }}
         >
-            <div className="max-w-[1360px] mx-auto px-6 lg:px-10 flex items-center justify-between h-[76px]">
-                <a href="#top" data-testid="nav-brand">
+            <div className="max-w-[1360px] mx-auto px-4 md:px-6 lg:px-10 flex items-center justify-between h-[60px] md:h-[76px]">
+                <a href="#top" data-testid="nav-brand" className="nav-brand">
                     <Logo markHeight={30} wordmarkSize={18} gap={12} tone={dark ? "light" : "ink"} />
                 </a>
 
@@ -44,13 +44,13 @@ const Nav = () => {
                     ))}
                 </ul>
 
-                <div className="flex items-center gap-4">
+                <div className="flex items-center gap-3 md:gap-4">
                     <a href="#signin"
                        className={`hidden md:inline-block nav-link ${dark ? "on-dark" : ""}`}
                        data-testid="nav-signin">
                         Sign in
                     </a>
-                    <a href="#create" data-testid="nav-create-agreement" className="btn-primary" style={{ padding: "11px 18px", fontSize: 13.5 }}>
+                    <a href="#create" data-testid="nav-create-agreement" className="btn-primary nav-cta" style={{ padding: "11px 18px", fontSize: 13.5 }}>
                         Create Agreement
                     </a>
                 </div>

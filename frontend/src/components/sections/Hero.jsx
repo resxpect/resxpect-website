@@ -16,7 +16,7 @@ const Hero = () => {
         <section
             id="top"
             data-testid="hero-section"
-            className="relative overflow-hidden"
+            className="relative overflow-hidden hero-root"
             style={{ minHeight: "min(100vh, 900px)", height: "100vh", maxHeight: 940, background: "#000" }}
         >
             {/* Video background */}
@@ -81,8 +81,8 @@ const Hero = () => {
 
             {/* Content — supporting line + CTAs anchored below the wordmark */}
             <div className="relative z-10 max-w-[1360px] mx-auto px-6 lg:px-10 h-full flex flex-col">
-                <div className="h-[100px] lg:h-[120px]" />
-                <div className="flex-1 flex flex-col items-center justify-end pb-16 lg:pb-24 text-center">
+                <div className="h-[100px] lg:h-[120px] hero-top-spacer" />
+                <div className="hero-content flex-1 flex flex-col items-center justify-end pb-16 lg:pb-24 text-center">
                     <p
                         className="fade-up"
                         data-testid="hero-supporting-line"
@@ -91,7 +91,7 @@ const Hero = () => {
                             fontWeight: 500,
                             fontSize: "clamp(15px, 1.35vw, 19px)",
                             letterSpacing: "-0.005em",
-                            marginBottom: 28,
+                            marginBottom: 22,
                             textShadow: "0 2px 14px rgba(0,0,0,0.5)",
                         }}
                     >
@@ -99,11 +99,11 @@ const Hero = () => {
                     </p>
 
                     <div className="flex flex-col sm:flex-row items-stretch sm:items-center gap-3 fade-up">
-                        <a data-testid="hero-cta-primary" href="#create" className="btn-primary">
+                        <a data-testid="hero-cta-primary" href="#create" className="btn-primary hero-cta-primary">
                             Create an Agreement
                             <span aria-hidden>→</span>
                         </a>
-                        <a data-testid="hero-cta-secondary" href="#how" className="btn-ghost-light">
+                        <a data-testid="hero-cta-secondary" href="#how" className="btn-ghost-light hero-cta-secondary">
                             How RESXPECT Works
                         </a>
                     </div>
