@@ -132,11 +132,29 @@ html, body {
 
 html { scroll-behavior: smooth; scroll-padding-top: 88px; }
 
+html, body {
+    max-width: 100%;
+    overflow-x: hidden;
+}
+
 /* Hero video */
+.hero-media-wrap {
+    position: absolute;
+    inset: 0;
+    z-index: 0;
+    background: #000;
+    overflow: hidden;
+}
 .hero-video {
     position: absolute; inset: 0; width: 100%; height: 100%;
     object-fit: cover; object-position: center center; z-index: 0;
     background: #0a0a0b;
+    display: block;
+}
+.hero-video-fallback {
+    position: absolute; inset: 0; width: 100%; height: 100%;
+    object-fit: cover; object-position: center center; z-index: 0;
+    display: block;
 }
 
 /* Ultrawide: constrain the rendered video width so the composition
@@ -154,43 +172,72 @@ html { scroll-behavior: smooth; scroll-padding-top: 88px; }
     }
 }
 
-/* Mobile-only hero refinements. Section is ~85svh, video is width-fit
-   at native 4:3 aspect so both faces stay visible on the left/right
-   edges, wordmark and mask scale down and lift upward, content sits
-   directly beneath the video with less empty black space. */
+/* Mobile-only hero: use a static 16:9 responsive container with
+   object-fit: contain so the video's original 4:3 frame is fully
+   visible (both faces + full wordmark) with pure-black bars on either
+   side. Aspect ratio is applied to the wrapper BEFORE the video
+   loads, preventing layout shift. Static positioning removes the
+   old absolute overrides that were forcing a portrait crop and
+   causing wobble. Also enforces overflow control so nothing exceeds
+   100 vw. */
 @media (max-width: 767px) {
     .hero-root {
-        height: 85svh !important;
-        min-height: 85svh !important;
+        height: auto !important;
+        min-height: 0 !important;
         max-height: none !important;
+        width: 100% !important;
+        max-width: 100vw !important;
+        overflow-x: hidden !important;
+        padding-bottom: 56px !important;
+    }
+    .hero-content-wrap {
+        height: auto !important;
+    }
+    .hero-media-wrap {
+        position: static !important;
+        width: 100% !important;
+        max-width: 100vw !important;
+        aspect-ratio: 16 / 9 !important;
+        overflow: hidden !important;
+        background: #000 !important;
+        margin-top: 60px !important;
+        inset: auto !important;
     }
     .hero-video,
     .hero-video-fallback {
+        position: static !important;
         inset: auto !important;
-        top: 60px !important;
-        left: 0 !important;
-        right: 0 !important;
+        top: auto !important;
+        left: auto !important;
+        right: auto !important;
+        bottom: auto !important;
         width: 100% !important;
-        height: 75vw !important;   /* 4:3 aspect from 100 vw width */
-        max-height: 62svh !important;
-        object-fit: cover !important;
+        height: 100% !important;
+        max-width: 100% !important;
+        object-fit: contain !important;
         object-position: center center !important;
         transform: none !important;
+        display: block !important;
+    }
+    .hero-vignette {
+        display: none !important;
     }
     .hero-wordmark-wrap {
-        top: calc(60px + 37.5vw) !important;
+        position: absolute !important;
+        top: 50% !important;
         left: 50% !important;
         transform: translate(-50%, -50%) !important;
-        width: min(320px, 74vw) !important;
-        height: min(78px, 18vw) !important;
+        width: min(300px, 60vw) !important;
+        height: min(72px, 14vw) !important;
     }
     .hero-wordmark-wrap img {
-        width: min(240px, 60vw) !important;
+        width: min(200px, 40vw) !important;
     }
     .hero-content {
+        flex: none !important;
         justify-content: flex-start !important;
-        padding-top: calc(60px + 75vw + 26px) !important;
-        padding-bottom: 24px !important;
+        padding-top: 28px !important;
+        padding-bottom: 0 !important;
     }
     .hero-top-spacer { display: none !important; }
     .hero-cta-primary,
