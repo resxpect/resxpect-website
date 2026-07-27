@@ -137,6 +137,18 @@ html, body {
     overflow-x: hidden;
 }
 
+/* Prevent horizontal overflow at very narrow mobile widths caused by
+   long words (e.g. "reputation") in section headlines/paragraphs.
+   Purely defensive — no visual redesign, just ensures no child
+   exceeds 100 vw. */
+@media (max-width: 380px) {
+    h1, h2, h3, p {
+        overflow-wrap: anywhere;
+        word-break: break-word;
+    }
+    #why h2 { font-size: 26px !important; line-height: 1.15 !important; }
+}
+
 /* Hero video */
 .hero-media-wrap {
     position: absolute;
