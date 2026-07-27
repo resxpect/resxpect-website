@@ -44,21 +44,26 @@ const Hero = () => {
             {/* Subtle overlay for text readability */}
             <div className="hero-vignette" />
 
-            {/* Wordmark mask + static wordmark layer.
-                Positioned to sit exactly over the animated wordmark in the
-                video, using a solid black band slightly larger than the mark
-                to fully mask the video's animated letters. The static
-                wordmark image on top is permanent — it never re-animates
-                when the video loops. */}
+            {/* Wordmark: small feathered black patch masks the animated
+                wordmark baked into the video, and the static coloured
+                wordmark image sits on top at the exact same position and
+                scale as the original. The gradient edges fade to
+                transparent so the patch reads as part of the dark
+                background, not a rectangle. */}
             <div
                 data-testid="hero-wordmark"
-                className="absolute left-1/2 -translate-x-1/2 flex items-center justify-center pointer-events-none"
+                className="absolute pointer-events-none"
                 style={{
                     top: "50%",
+                    left: "50%",
                     transform: "translate(-50%, -50%)",
-                    width: "min(920px, 62vw)",
-                    height: "clamp(58px, 6.4vw, 96px)",
-                    background: "#000",
+                    width: "min(620px, 44vw)",
+                    height: "clamp(70px, 7.4vw, 110px)",
+                    background:
+                        "radial-gradient(ellipse 60% 55% at 50% 50%, #000 45%, rgba(0,0,0,0.9) 62%, rgba(0,0,0,0.55) 78%, rgba(0,0,0,0) 100%)",
+                    display: "flex",
+                    alignItems: "center",
+                    justifyContent: "center",
                     zIndex: 2,
                 }}
             >
@@ -66,10 +71,9 @@ const Hero = () => {
                     src="/assets/wordmark.webp"
                     alt="RESXPECT"
                     style={{
-                        width: "88%",
+                        width: "min(500px, 34vw)",
                         height: "auto",
                         display: "block",
-                        maxHeight: "72%",
                         objectFit: "contain",
                     }}
                 />

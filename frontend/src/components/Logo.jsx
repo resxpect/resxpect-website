@@ -19,7 +19,7 @@ const Logo = ({
             data-testid="resxpect-logo"
         >
             <img
-                src="/assets/logo-x.webp"
+                src="/assets/logo-x-clean.webp"
                 alt="RESXPECT"
                 style={{
                     height: markHeight,
