@@ -102,13 +102,9 @@ const Hero = () => {
                         Different people. One protected agreement.
                     </p>
 
-                    <div className="flex flex-col sm:flex-row items-stretch sm:items-center gap-3 fade-up">
-                        <a data-testid="hero-cta-primary" href="#create" className="btn-primary hero-cta-primary">
-                            Create an Agreement
-                            <span aria-hidden>→</span>
-                        </a>
+                    <div className="flex justify-center fade-up">
                         <a data-testid="hero-cta-secondary" href="#how" className="btn-ghost-light hero-cta-secondary">
-                            How RESXPECT Works
+                            How It Works
                         </a>
                     </div>
                 </div>
