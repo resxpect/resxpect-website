@@ -71,7 +71,7 @@ const Hero = () => {
                     src="/assets/wordmark.webp"
                     alt="RESXPECT"
                     style={{
-                        width: "min(500px, 34vw)",
+                        width: "min(450px, 30vw)",
                         height: "auto",
                         display: "block",
                         objectFit: "contain",
