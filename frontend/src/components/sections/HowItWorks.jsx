@@ -47,6 +47,10 @@ const HowItWorks = () => {
                     <h2 className="font-display" style={{ fontSize: "clamp(32px, 4.4vw, 56px)", lineHeight: 1.05, color: "var(--ink)" }}>
                         Three steps. One <span style={{ color: "var(--validator)" }}>protected</span> outcome.
                     </h2>
+                    <p style={{ fontSize: 17.5, lineHeight: 1.6, color: "var(--ink-2)", marginTop: 20, maxWidth: 680, marginLeft: "auto", marginRight: "auto" }}>
+                        Create clear agreements, protect committed funds and build a
+                        verifiable record of work completed.
+                    </p>
                 </div>
 
                 <div className="relative">
