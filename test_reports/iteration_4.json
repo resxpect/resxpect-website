@@ -1,0 +1,28 @@
+{
+  "summary": "Verified mobile hero aspect-ratio fix (4/3) on RESXPECT marketing site. All acceptance criteria pass: container aspect-ratio is exactly '4 / 3' at 320/375/390/430 mobile widths; heights equal viewportWidth × 3/4 (240, 281.25, 292.5, 322.5). Video element rect equals container rect (identical width AND height) => NO pillarbox and NO letterbox. Screenshots confirm both faces (orange + blue) and full RESXPECT wordmark visible edge-to-edge; leftmost/rightmost pixels are actual video content, not container black. Container stable across t=0,4,8,15s at 390px (390 × 292.5 constant). Desktop (1440x900) and tablet (900x1200) unchanged: aspect-ratio 'auto', object-fit 'cover', wrap fills 100vh. hero-content padding-top computed = 20px (matches spec, headline sits close to video). Wordmark data-testid present, centered horizontally over video area. Per instructions, did NOT retest #why overflow.",
+  "backend_issues": {"critical": [], "minor": []},
+  "frontend_issues": {
+    "ui_bugs": [],
+    "integration_issues": [],
+    "design_issues": []
+  },
+  "test_report_links": [],
+  "action_items": [],
+  "critical_code_review_comments": [],
+  "updated_files": [],
+  "success_rate": {"backend": "N/A", "frontend": "100%"},
+  "seed_data_creation": "",
+  "retest_needed": false,
+  "should_main_agent_self_test": true,
+  "context_for_next_testing_agent": "Hero mobile aspect-ratio 4/3 fix verified. Measurements: 320->240, 375->281.25, 390->292.5, 430->322.5. Video rect == wrap rect at every mobile width => no black bars. Desktop/tablet retain aspect-ratio 'auto' + object-fit 'cover'. Preexisting #why section horizontal overflow at 320/375 was NOT retested per user's instruction (out of scope).",
+  "measurements": {
+    "mobile_320": {"aspectRatio": "4 / 3", "wrapW": 320, "wrapH": 240, "videoW": 320, "videoH": 240, "objectFit": "contain"},
+    "mobile_375": {"aspectRatio": "4 / 3", "wrapW": 375, "wrapH": 281.25, "videoW": 375, "videoH": 281.25, "objectFit": "contain"},
+    "mobile_390": {"aspectRatio": "4 / 3", "wrapW": 390, "wrapH": 292.5, "videoW": 390, "videoH": 292.5, "objectFit": "contain"},
+    "mobile_430": {"aspectRatio": "4 / 3", "wrapW": 430, "wrapH": 322.5, "videoW": 430, "videoH": 322.5, "objectFit": "contain"},
+    "desktop_1440": {"aspectRatio": "auto", "wrapW": 1440, "wrapH": 900, "objectFit": "cover"},
+    "tablet_900": {"aspectRatio": "auto", "wrapW": 900, "wrapH": 940, "objectFit": "cover"},
+    "stability_390": [[0, 292.5], [4, 292.5], [8, 292.5], [15, 292.5]],
+    "hero_content_padding_top": "20px"
+  }
+}

@@ -209,11 +209,13 @@ html, body {
         position: static !important;
         width: 100% !important;
         max-width: 100vw !important;
-        aspect-ratio: 16 / 9 !important;
+        aspect-ratio: 4 / 3 !important;   /* Match the source video's native 1440×1080 aspect exactly — no pillarbox */
         overflow: hidden !important;
         background: #000 !important;
         margin-top: 60px !important;
         inset: auto !important;
+        min-height: 0 !important;
+        height: auto !important;
     }
     .hero-video,
     .hero-video-fallback {
@@ -248,7 +250,7 @@ html, body {
     .hero-content {
         flex: none !important;
         justify-content: flex-start !important;
-        padding-top: 28px !important;
+        padding-top: 20px !important;
         padding-bottom: 0 !important;
     }
     .hero-top-spacer { display: none !important; }
