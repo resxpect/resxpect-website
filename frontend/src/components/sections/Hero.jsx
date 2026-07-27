@@ -16,8 +16,8 @@ const Hero = () => {
         <section
             id="top"
             data-testid="hero-section"
-            className="relative overflow-hidden"
-            style={{ minHeight: "min(100vh, 900px)", height: "100vh", maxHeight: 940 }}
+            className="relative overflow-hidden hero-desktop-2x1"
+            style={{ minHeight: "min(100vh, 900px)", height: "100vh", maxHeight: 940, background: "#000" }}
         >
             {/* Video background */}
             {!reduced && (

@@ -132,10 +132,21 @@ html, body {
 
 html { scroll-behavior: smooth; scroll-padding-top: 88px; }
 
+/* Hero — temporary desktop-only 2:1 aspect ratio preview */
+@media (min-width: 1024px) {
+    .hero-desktop-2x1 {
+        aspect-ratio: 2 / 1 !important;
+        height: auto !important;
+        min-height: 0 !important;
+        max-height: none !important;
+        background: #000;
+    }
+}
+
 /* Hero video */
 .hero-video {
     position: absolute; inset: 0; width: 100%; height: 100%;
-    object-fit: cover; z-index: 0;
+    object-fit: cover; object-position: center center; z-index: 0;
     background: #0a0a0b;
 }
 .hero-vignette {
