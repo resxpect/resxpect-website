@@ -29,7 +29,7 @@ const Nav = () => {
         >
             <div className="max-w-[1360px] mx-auto px-6 lg:px-10 flex items-center justify-between h-[76px]">
                 <a href="#top" data-testid="nav-brand">
-                    <Logo markHeight={30} wordmarkSize={20} gap={10} tone={dark ? "light" : "ink"} />
+                    <Logo markHeight={30} wordmarkSize={18} gap={12} tone={dark ? "light" : "ink"} />
                 </a>
 
                 <ul className="hidden lg:flex items-center gap-8">
