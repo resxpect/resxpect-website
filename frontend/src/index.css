@@ -212,7 +212,7 @@ html, body {
         justify-content: center !important;
     }
     .hero-media-wrap {
-        position: static !important;
+        position: relative !important;
         width: 100% !important;
         max-width: 100vw !important;
         aspect-ratio: 4 / 3 !important;
@@ -247,12 +247,15 @@ html, body {
         position: absolute !important;
         top: 50% !important;
         left: 50% !important;
+        bottom: auto !important;
+        right: auto !important;
+        margin: 0 !important;
         transform: translate(-50%, -50%) !important;
-        width: min(270px, 54vw) !important;
-        height: min(66px, 12.6vw) !important;
+        width: min(256px, 51vw) !important;
+        height: min(63px, 12vw) !important;
     }
     .hero-wordmark-wrap img {
-        width: min(180px, 36vw) !important;
+        width: min(170px, 34vw) !important;
     }
     .hero-content {
         flex: none !important;
