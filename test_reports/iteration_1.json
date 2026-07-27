@@ -1,0 +1,22 @@
+{
+  "summary": "Frontend-only visual verification of Hero video composition fixes across 5 viewports (1440x900, 1800x1000, 2200x1000, 900x1200, 400x800). All acceptance criteria met: temporary 2:1 desktop preview fully removed, ultrawide media query correctly constrains video to 1600px centered with black bars, static wordmark fully covers baked-in animated wordmark at every viewport (no duplicate R/T letters), feathered mask blends into black background (no hard rectangle), static wordmark is pixel-stable across t=0/4/8/12s (does not animate on video loop), and all below-hero content renders correctly.",
+  "backend_issues": {"critical": [], "minor": []},
+  "frontend_issues": {
+    "ui_bugs": [],
+    "integration_issues": [],
+    "design_issues": []
+  },
+  "test_report_links": [],
+  "action_items": [],
+  "critical_code_review_comments": [
+    "Hero.jsx uses inline styles heavily — consider extracting the wordmark-wrap into a class in index.css alongside .hero-video for consistency (non-blocking).",
+    "The video element renders even though readyState=0 in headless Playwright runs; screenshots confirm the actual frames render fine in real browsers via poster + autoplay. No action needed."
+  ],
+  "updated_files": [],
+  "success_rate": {"backend": "N/A", "frontend": "100%"},
+  "seed_data_creation": "None",
+  "retest_needed": false,
+  "should_main_agent_self_test": false,
+  "context_for_next_testing_agent": "Hero video sizing/wordmark bugs fully resolved. Measured metrics: 1440x900 video=1440x900 gap=0; 1800x1000 video=1600x940 gap=100 each side; 2200x1000 video=1600x940 gap=300 each side; 900x1200 video=900x940; 400x800 video=400x800. Wordmark img is stable at (497,435) 446x31 across 12s window. All hero-section heights match spec (100vh capped at 940px maxHeight).",
+  "rca of the issue": "N/A — this was a verification pass, not a bug hunt. Fix already in place (removed .hero-desktop-2x1, added @media (min-width:1600px) constraint on .hero-video/.hero-video-fallback, sized wordmark mask/img using max(vw,vh) to always cover baked-in animated wordmark)."
+}

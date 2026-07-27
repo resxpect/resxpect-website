@@ -16,7 +16,7 @@ const Hero = () => {
         <section
             id="top"
             data-testid="hero-section"
-            className="relative overflow-hidden hero-desktop-2x1"
+            className="relative overflow-hidden"
             style={{ minHeight: "min(100vh, 900px)", height: "100vh", maxHeight: 940, background: "#000" }}
         >
             {/* Video background */}
@@ -41,26 +41,26 @@ const Hero = () => {
                 style={{ objectFit: "cover", zIndex: 0, display: reduced ? "block" : "none" }}
                 aria-hidden="true"
             />
-            {/* Subtle overlay for text readability */}
             <div className="hero-vignette" />
 
-            {/* Wordmark: small feathered black patch masks the animated
-                wordmark baked into the video, and the static coloured
-                wordmark image sits on top at the exact same position and
-                scale as the original. The gradient edges fade to
-                transparent so the patch reads as part of the dark
-                background, not a rectangle. */}
+            {/* Wordmark mask + static wordmark.
+                Sized using max(vw, vh) so the mask always fully covers the
+                animated wordmark baked into the video regardless of how the
+                video is scaled by object-fit: cover (which fills the larger
+                of the viewport dimensions). Feathered radial gradient makes
+                the edges blend into the black background so no rectangle is
+                visible. Static wordmark on top never animates. */}
             <div
                 data-testid="hero-wordmark"
-                className="absolute pointer-events-none"
+                className="hero-wordmark-wrap absolute pointer-events-none"
                 style={{
                     top: "50%",
                     left: "50%",
                     transform: "translate(-50%, -50%)",
-                    width: "min(620px, 44vw)",
-                    height: "clamp(70px, 7.4vw, 110px)",
+                    width: "min(760px, max(48vw, 62vh))",
+                    height: "min(130px, max(8.5vh, 6.4vw))",
                     background:
-                        "radial-gradient(ellipse 60% 55% at 50% 50%, #000 45%, rgba(0,0,0,0.9) 62%, rgba(0,0,0,0.55) 78%, rgba(0,0,0,0) 100%)",
+                        "radial-gradient(ellipse 55% 50% at 50% 50%, #000 45%, rgba(0,0,0,0.95) 60%, rgba(0,0,0,0.6) 78%, rgba(0,0,0,0) 100%)",
                     display: "flex",
                     alignItems: "center",
                     justifyContent: "center",
@@ -71,7 +71,7 @@ const Hero = () => {
                     src="/assets/wordmark.webp"
                     alt="RESXPECT"
                     style={{
-                        width: "min(450px, 30vw)",
+                        width: "min(460px, max(31vw, 40vh))",
                         height: "auto",
                         display: "block",
                         objectFit: "contain",
