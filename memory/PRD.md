@@ -1,60 +1,45 @@
-# RESXPECT — Marketing Website
+# RESXPECT — Marketing Website (v3, cinematic hero)
 
-## Current status (Jan 2026)
-Production-quality marketing site rebuilt to match the uploaded RESXPECT visual reference.
+## Status (Jan 2026)
+Full landing rebuild for the new brand story: three role colors, cinematic video hero with the RESXPECT wordmark visible in-frame, and the six-section narrative Hero → How it works → Why RESXPECT → Roles → Global message → Final CTA.
 
-## Stack
-React 19 + Tailwind 3 + CRACO. Static frontend only — no backend, no marketplace, no auth, no database (per requirement).
+## Design tokens
+- **Creator (orange):** `#F7931A`
+- **Runner (blue):** `#2A6DEA`
+- **Validator / RESXPECT green:** `#2E8B47`
+- Soft variants of each: `--creator-soft`, `--runner-soft`, `--validator-soft`
+- Neutrals: near-black `#0E0E10`, paper white, warm `#F7F5F1`
+- Type: Manrope 400/500/600/700/800 (display + body), IBM Plex Mono (labels)
 
-## Design system
-- **Brand orange:** `#F7931A` (RESXPECT accent, primary CTA, italic emphasis)
-- **Ink:** `#0E0E10` primary, `#3A3A3D` secondary, `#6B6B70` tertiary
-- **Backgrounds:** white primary, warm off-white `#FDF7EF` counterpoint
-- **Type:** Manrope (700/800 for display, 400/500/600 for body) + IBM Plex Mono (numeric)
-- **Card:** 16px radius, thin hairlines `rgba(14,14,16,0.10)`, soft ambient shadow
-- **Buttons:** 10px radius pill; orange primary, orange-outline secondary
+## Structure
+- `Nav` — transparent on hero (white text), solid white glass on scroll; links: How It Works · Roles · Why RESXPECT · Sign in · Create Agreement CTA.
+- `Hero` — full-viewport dark section with `<video autoplay muted loop playsInline>` background using `/assets/hero.mp4`, `object-fit: cover`, subtle top/bottom vignette + radial mask. Poster/fallback image (`/assets/hero-poster.jpg`) + `prefers-reduced-motion` fallback via CSS. Content anchored below the in-frame RESXPECT wordmark: headline "Different people. One **protected** agreement.", supporting copy, primary + ghost CTAs.
+- `HowItWorks` — 3 steps (Commit / Deliver / Verify) with role-colored numbered circles and a horizontal connecting rail.
+- `WhyResxpect` — statement headline with role-coloured emphasis on *payment / work / reputation* + 4 benefit cards (Protected funds, Connected evidence, Clear outcomes, Verifiable reputation).
+- `Roles` — three cards with role-colour accent bars: Creator (orange), Runner (blue), Validator (green).
+- `GlobalMessage` — full statement "The **people** change. The **roles** change. The **agreement** remains protected." with faint hexagon watermark on the right.
+- `FinalCTA` — "Make the agreement stronger than the promise." card with tri-colour ambient glow + full 4-column footer.
 
-## Sections
-1. **Nav** — shield-with-handshake logomark; How It Works · Protected Agreements · Reputation · Disputes · About; orange Request Access CTA
-2. **Hero** — two-column: label pill + editorial headline (orange "independent work.") + copy + two CTAs + three orange checkmarked benefits · three-phone composition (center largest and straight; left tilted −8°; right tilted +8°; both angled outward; center overlaps both; no cropping; transparent surround)
-3. **Principles** — Built on principles that protect everyone (Protected Agreements, Portable Reputation, Fair Resolution)
-4. **How RESXPECT works** — five numbered steps horizontal (desktop) / vertical (mobile) with connecting rail
-5. **Reputation** — two panels (Respect Points, Skill Trust); no internal formulas surfaced
-6. **Disputes** — 4-step evidence → response → validators → payment flow
-7. **Final CTA + footer** — "People can meet anywhere. Trust is built on RESXPECT."
-
-## Component tree
+## Assets
 ```
-src/
-├── App.js
-├── App.css
-├── index.css                       (design tokens, buttons, cards, animations)
-└── components/
-    ├── Logo.jsx                    (orange shield + white handshake + wordmark)
-    ├── Nav.jsx
-    ├── Phones.jsx                  (PhoneAgreements, PhoneHome, PhoneLifecycle)
-    └── sections/
-        ├── Hero.jsx
-        ├── Principles.jsx
-        ├── HowItWorks.jsx
-        ├── Reputation.jsx
-        ├── Disputes.jsx
-        └── FinalCTA.jsx
+/public/assets/
+├── hero.mp4                 (4.5 MB, 1440x1080, 14.5s)
+├── hero-poster.jpg          (fallback / prefers-reduced-motion frame)
+├── logo-x.webp              (hexagon-X mark v7)
+└── (legacy) hero-mock.png, resxpect-mark.webp, resxpect-logo.webp
 ```
 
 ## Responsive
-- Desktop ≥1024: two-column hero, 5-across steps
-- Tablet 768–1023: single-column hero, principles 1-col
-- Mobile <768: fully stacked, 5-step vertical rail
+- ≥1024: 3-step / 3-card / 4-benefit horizontal grids
+- 768–1023: 2-col benefit grid, 1-col role grid, stacked hero
+- <768: fully stacked, buttons vertical
+- Respects `prefers-reduced-motion` (video hidden, poster shown)
 
-## Explicitly not done (per requirement)
-- No marketplace page or navigation entry
-- No backend, no auth, no payment/escrow logic
-- No stock photos, no crypto/blockchain iconography, no shield logo other than the official uploaded mark
-- No fake live statistics, ticker, ledger sync or protocol version labels
+## Explicit non-goals (per brief)
+- No stock photos, no crypto imagery, no marketplace navigation, no fake live stats, no dark backgrounds outside the hero video, no gender association with the role colors.
 
 ## Backlog
-- Wire CTAs to a real waitlist backend + email capture
-- Mobile hamburger menu for < lg viewports (nav links currently hidden below 1024px)
-- Framer-motion staggered scroll reveals per section
-- Dedicated pages for How It Works, Protected Agreements, Reputation, Disputes, Privacy, Terms, Contact
+- Wire Create Agreement CTAs to a real backend + email capture
+- Mobile hamburger menu for <1024 px viewports
+- Dedicated pages: How It Works, Roles, Why RESXPECT, Trust and Safety, Terms, Privacy, Contact
+- Serve hero.mp4 alongside a `webm` transcoded variant for smaller Chrome/Android payloads

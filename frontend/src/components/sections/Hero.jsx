@@ -1,85 +1,93 @@
-import React from "react";
+import React, { useEffect, useRef, useState } from "react";
 
 const Hero = () => {
-    return (
-        <section id="top" data-testid="hero-section" className="section-white relative pt-[128px] pb-20 lg:pb-32">
-            {/* Brand watermark — behind phone image, right side only */}
-            <img
-                src="/assets/resxpect-mark.webp"
-                alt=""
-                aria-hidden="true"
-                data-testid="hero-watermark"
-                className="hidden lg:block pointer-events-none select-none absolute"
-                style={{
-                    right: -40,
-                    top: "50%",
-                    transform: "translateY(-50%)",
-                    width: 460,
-                    height: "auto",
-                    opacity: 0.08,
-                    zIndex: 0,
-                }}
-            />
-            <div className="max-w-[1360px] mx-auto px-6 lg:px-10 relative" style={{ zIndex: 1 }}>
-                <div className="grid grid-cols-12 gap-8 lg:gap-12 items-center">
-                    {/* Left */}
-                    <div className="col-span-12 lg:col-span-6 fade-up">
-                        <div className="label-pill mb-8" data-testid="hero-label">
-                            Protected Agreements · Payment Security · Reputation You Own
-                        </div>
-                        <h1 className="font-display mb-8" style={{
-                            fontSize: "clamp(40px, 4.8vw, 68px)",
-                            lineHeight: 1.04, color: "var(--ink)",
-                        }}>
-                            The trust layer for<br />
-                            <span style={{ color: "var(--orange)" }}>independent&nbsp;work.</span>
-                        </h1>
-                        <p style={{ fontSize: 18, lineHeight: 1.55, color: "var(--ink-2)", maxWidth: 520, marginBottom: 40 }}>
-                            Work with anyone, anywhere — without having to trust them first.
-                            RESXPECT protects the agreement, the payment and the proof, while
-                            every successful outcome builds reputation.
-                        </p>
-                        <div className="flex flex-wrap items-center gap-3 mb-10">
-                            <a data-testid="hero-cta-primary" href="#request" className="btn-primary">
-                                Explore RESXPECT
-                                <span aria-hidden>→</span>
-                            </a>
-                            <a data-testid="hero-cta-secondary" href="#how" className="btn-outline">
-                                How It Works
-                            </a>
-                        </div>
-                        <div className="flex flex-wrap items-center gap-x-8 gap-y-3">
-                            {["Protected agreements", "Fair outcomes", "Reputation earned"].map((b) => (
-                                <div key={b} className="flex items-center gap-2.5">
-                                    <span style={{
-                                        width: 20, height: 20, borderRadius: 10, background: "var(--orange-soft)",
-                                        display: "inline-flex", alignItems: "center", justifyContent: "center",
-                                    }}>
-                                        <svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="#F7931A" strokeWidth="3.5" strokeLinecap="round" strokeLinejoin="round">
-                                            <polyline points="20 6 9 17 4 12" />
-                                        </svg>
-                                    </span>
-                                    <span style={{ fontSize: 14, fontWeight: 600, color: "var(--ink)" }}>{b}</span>
-                                </div>
-                            ))}
-                        </div>
-                    </div>
+    const videoRef = useRef(null);
+    const [reduced, setReduced] = useState(false);
 
-                    {/* Right — single mock image */}
-                    <div className="col-span-12 lg:col-span-6 flex justify-center lg:justify-end">
-                        <img
-                            src="/assets/hero-mock.png"
-                            alt="RESXPECT product preview"
-                            data-testid="hero-mock-image"
-                            className="w-full h-auto"
-                            style={{
-                                maxWidth: 700,
-                                objectFit: "contain",
-                                background: "transparent",
-                                border: "none",
-                                boxShadow: "none",
-                            }}
-                        />
+    useEffect(() => {
+        const mq = window.matchMedia("(prefers-reduced-motion: reduce)");
+        setReduced(mq.matches);
+        const onChange = () => setReduced(mq.matches);
+        mq.addEventListener?.("change", onChange);
+        return () => mq.removeEventListener?.("change", onChange);
+    }, []);
+
+    return (
+        <section
+            id="top"
+            data-testid="hero-section"
+            className="relative overflow-hidden"
+            style={{ minHeight: "min(100vh, 900px)", height: "100vh", maxHeight: 940 }}
+        >
+            {/* Video background */}
+            {!reduced && (
+                <video
+                    ref={videoRef}
+                    className="hero-video"
+                    src="/assets/hero.mp4"
+                    poster="/assets/hero-poster.jpg"
+                    autoPlay
+                    muted
+                    loop
+                    playsInline
+                    preload="metadata"
+                    aria-hidden="true"
+                />
+            )}
+            <img
+                src="/assets/hero-poster.jpg"
+                alt=""
+                className="hero-video-fallback absolute inset-0 w-full h-full"
+                style={{ objectFit: "cover", zIndex: 0, display: reduced ? "block" : "none" }}
+                aria-hidden="true"
+            />
+            {/* Subtle overlay for text readability */}
+            <div className="hero-vignette" />
+
+            {/* Content */}
+            <div className="relative z-10 max-w-[1360px] mx-auto px-6 lg:px-10 h-full flex flex-col">
+                {/* Top spacer for nav */}
+                <div className="h-[100px] lg:h-[120px]" />
+
+                <div className="flex-1 flex flex-col items-center justify-end pb-14 lg:pb-20 text-center">
+                    <h1
+                        className="font-display fade-up"
+                        style={{
+                            color: "#fff",
+                            fontSize: "clamp(32px, 4.6vw, 68px)",
+                            lineHeight: 1.05,
+                            maxWidth: 900,
+                            textShadow: "0 2px 30px rgba(0,0,0,0.35)",
+                            marginBottom: 16,
+                        }}
+                    >
+                        Different people. One{" "}
+                        <span style={{ color: "var(--validator)" }}>protected</span> agreement.
+                    </h1>
+
+                    <p
+                        className="fade-up"
+                        style={{
+                            color: "rgba(255,255,255,0.86)",
+                            fontSize: 16.5,
+                            lineHeight: 1.55,
+                            maxWidth: 560,
+                            marginBottom: 26,
+                            textShadow: "0 1px 12px rgba(0,0,0,0.35)",
+                        }}
+                    >
+                        Create clear agreements, protect committed funds and build a
+                        verifiable record of work completed.
+                    </p>
+
+                    <div className="flex flex-col sm:flex-row items-stretch sm:items-center gap-3 fade-up">
+                        <a data-testid="hero-cta-primary" href="#create" className="btn-primary">
+                            Create an Agreement
+                            <span aria-hidden>→</span>
+                        </a>
+                        <a data-testid="hero-cta-secondary" href="#how" className="btn-ghost-light">
+                            How RESXPECT Works
+                        </a>
                     </div>
                 </div>
             </div>

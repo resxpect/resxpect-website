@@ -1,70 +1,84 @@
 import React from "react";
 
 const steps = [
-    { n: "01", title: "Create an Agreement", body: "Both sides agree on scope, deadlines and evidence up front." },
-    { n: "02", title: "Protect Payment", body: "Funds are held safely and only released against defined outcomes." },
-    { n: "03", title: "Complete the Work", body: "Progress and deliverables are recorded against the agreement." },
-    { n: "04", title: "Verify the Outcome", body: "The other party confirms the work meets the agreed terms." },
-    { n: "05", title: "Build Reputation", body: "Successful completion contributes to a portable trust record." },
+    {
+        n: "01",
+        title: "Commit",
+        body: "Both parties accept clear terms and committed funds are protected.",
+        color: "creator",
+        icon: (
+            <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round">
+                <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z" />
+                <path d="M14 2v6h6M9 13l2 2 4-4" />
+            </svg>
+        ),
+    },
+    {
+        n: "02",
+        title: "Deliver",
+        body: "Work and supporting evidence remain connected to the agreement.",
+        color: "runner",
+        icon: (
+            <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round">
+                <path d="M4 4h12l4 5v11H4z" /><path d="M16 4v5h4M8 13h8M8 17h5" />
+            </svg>
+        ),
+    },
+    {
+        n: "03",
+        title: "Verify",
+        body: "The outcome becomes part of a clear, verifiable agreement history.",
+        color: "validator",
+        icon: (
+            <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round">
+                <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z" />
+                <path d="M9 12l2 2 4-4" />
+            </svg>
+        ),
+    },
 ];
 
 const HowItWorks = () => {
     return (
-        <section id="how" data-testid="how-section" className="section-warm py-24 lg:py-32">
+        <section id="how" data-testid="how-section" className="section-white py-24 lg:py-32">
             <div className="max-w-[1360px] mx-auto px-6 lg:px-10">
                 <div className="text-center max-w-[820px] mx-auto mb-16">
+                    <div className="label-pill on-paper mb-6">How It Works</div>
                     <h2 className="font-display" style={{ fontSize: "clamp(32px, 4.4vw, 56px)", lineHeight: 1.05, color: "var(--ink)" }}>
-                        How <span style={{ color: "var(--orange)" }}>RESXPECT</span> works.
+                        Three steps. One <span style={{ color: "var(--validator)" }}>protected</span> outcome.
                     </h2>
-                    <p style={{ fontSize: 17, lineHeight: 1.55, color: "var(--ink-2)", marginTop: 18 }}>
-                        Five clear steps that turn a handshake into a protected outcome.
-                    </p>
                 </div>
 
-                {/* Desktop horizontal */}
-                <div className="hidden lg:block relative">
-                    <div className="absolute top-[26px] left-[6%] right-[6%] h-px" style={{ background: "var(--line-strong)" }} />
-                    <div className="grid grid-cols-5 gap-6">
+                <div className="relative">
+                    {/* connecting rail — desktop */}
+                    <div className="hidden lg:block absolute top-[62px] left-[8%] right-[8%] h-px" style={{ background: "var(--line-strong)" }} />
+
+                    <div className="grid grid-cols-1 lg:grid-cols-3 gap-8 lg:gap-14">
                         {steps.map((s) => (
-                            <div key={s.n} className="relative text-center" data-testid={`how-step-${s.n}`}>
-                                <div className="mx-auto flex items-center justify-center relative z-10"
+                            <div key={s.n} data-testid={`step-${s.n}`} className="relative text-center">
+                                <div
+                                    className="mx-auto flex items-center justify-center relative z-10 bg-white"
                                     style={{
-                                        width: 52, height: 52, borderRadius: 26,
-                                        background: "#fff", border: "1.5px solid var(--orange)",
-                                        color: "var(--orange)", fontWeight: 800, fontSize: 15,
-                                        marginBottom: 20,
-                                    }}>
-                                    {s.n}
+                                        width: 68, height: 68, borderRadius: 34,
+                                        border: `1.5px solid var(--${s.color})`,
+                                        color: `var(--${s.color})`,
+                                        marginBottom: 22,
+                                    }}
+                                >
+                                    {s.icon}
                                 </div>
-                                <h3 style={{ fontSize: 17, fontWeight: 800, color: "var(--ink)", marginBottom: 8, letterSpacing: "-0.01em" }}>
+                                <div style={{ fontSize: 12, fontWeight: 700, letterSpacing: "0.14em", textTransform: "uppercase", color: `var(--${s.color})`, marginBottom: 8 }}>
+                                    Step {s.n}
+                                </div>
+                                <h3 style={{ fontSize: 26, fontWeight: 800, letterSpacing: "-0.02em", color: "var(--ink)", marginBottom: 10 }}>
                                     {s.title}
                                 </h3>
-                                <p style={{ fontSize: 13.5, lineHeight: 1.55, color: "var(--ink-2)", padding: "0 6px" }}>
+                                <p style={{ fontSize: 15.5, lineHeight: 1.6, color: "var(--ink-2)", maxWidth: 320, margin: "0 auto" }}>
                                     {s.body}
                                 </p>
                             </div>
                         ))}
                     </div>
-                </div>
-
-                {/* Mobile vertical */}
-                <div className="lg:hidden space-y-5">
-                    {steps.map((s) => (
-                        <div key={s.n} className="card p-6 flex gap-4">
-                            <div className="flex-shrink-0 flex items-center justify-center"
-                                style={{
-                                    width: 44, height: 44, borderRadius: 22,
-                                    background: "#fff", border: "1.5px solid var(--orange)",
-                                    color: "var(--orange)", fontWeight: 800,
-                                }}>
-                                {s.n}
-                            </div>
-                            <div>
-                                <h3 style={{ fontSize: 17, fontWeight: 800, color: "var(--ink)", marginBottom: 4 }}>{s.title}</h3>
-                                <p style={{ fontSize: 14, lineHeight: 1.55, color: "var(--ink-2)" }}>{s.body}</p>
-                            </div>
-                        </div>
-                    ))}
                 </div>
             </div>
         </section>

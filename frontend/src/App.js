@@ -2,10 +2,10 @@ import React from "react";
 import "@/App.css";
 import Nav from "@/components/Nav";
 import Hero from "@/components/sections/Hero";
-import Principles from "@/components/sections/Principles";
 import HowItWorks from "@/components/sections/HowItWorks";
-import Reputation from "@/components/sections/Reputation";
-import Disputes from "@/components/sections/Disputes";
+import WhyResxpect from "@/components/sections/WhyResxpect";
+import Roles from "@/components/sections/Roles";
+import GlobalMessage from "@/components/sections/GlobalMessage";
 import FinalCTA from "@/components/sections/FinalCTA";
 
 function App() {
@@ -14,10 +14,10 @@ function App() {
             <Nav />
             <main>
                 <Hero />
-                <Principles />
                 <HowItWorks />
-                <Reputation />
-                <Disputes />
+                <WhyResxpect />
+                <Roles />
+                <GlobalMessage />
                 <FinalCTA />
             </main>
         </div>

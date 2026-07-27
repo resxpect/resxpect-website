@@ -1,17 +1,17 @@
 import React from "react";
 
 /**
- * RESXPECT logo lockup — uses the tight-cropped handshake mark.
- * `markHeight` controls the visible handshake height in px; width scales
- * proportionally from the source aspect ratio.
+ * RESXPECT logo — hexagon with green X (LogoV7). Used as-is.
  */
 const Logo = ({
-    markHeight = 24,
+    markHeight = 30,
     wordmarkSize = 20,
     gap = 10,
     className = "",
     withWordmark = true,
+    tone = "ink",
 }) => {
+    const wordColor = tone === "light" ? "#ffffff" : "var(--ink)";
     return (
         <div
             className={`inline-flex items-center ${className}`}
@@ -19,7 +19,7 @@ const Logo = ({
             data-testid="resxpect-logo"
         >
             <img
-                src="/assets/resxpect-mark.webp"
+                src="/assets/logo-x.webp"
                 alt="RESXPECT"
                 style={{
                     height: markHeight,
@@ -35,7 +35,7 @@ const Logo = ({
                         fontWeight: 800,
                         fontSize: wordmarkSize,
                         letterSpacing: "-0.01em",
-                        color: "var(--ink)",
+                        color: wordColor,
                         lineHeight: 1,
                     }}
                 >
