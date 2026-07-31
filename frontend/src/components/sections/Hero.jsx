@@ -1,0 +1,116 @@
+import React, { useEffect, useRef, useState } from "react";
+
+const Hero = () => {
+    const videoRef = useRef(null);
+    const [reduced, setReduced] = useState(false);
+
+    useEffect(() => {
+        const mq = window.matchMedia("(prefers-reduced-motion: reduce)");
+        setReduced(mq.matches);
+        const onChange = () => setReduced(mq.matches);
+        mq.addEventListener?.("change", onChange);
+        return () => mq.removeEventListener?.("change", onChange);
+    }, []);
+
+    return (
+        <section
+            id="top"
+            data-testid="hero-section"
+            className="relative overflow-hidden hero-root"
+            style={{ minHeight: "min(100vh, 900px)", height: "100vh", maxHeight: 940, background: "#000" }}
+        >
+            {/* Media wrap — desktop/tablet: absolute fill; mobile: static
+                16:9 responsive container so the video's original
+                proportions are preserved without any zoom, stretch or
+                crop-wobble on mobile. */}
+            <div className="hero-media-wrap">
+                {!reduced && (
+                    <video
+                        ref={videoRef}
+                        className="hero-video"
+                        src="/assets/hero.mp4"
+                        poster="/assets/hero-poster.jpg"
+                        autoPlay
+                        muted
+                        loop
+                        playsInline
+                        preload="metadata"
+                        aria-hidden="true"
+                    />
+                )}
+                <img
+                    src="/assets/hero-poster.jpg"
+                    alt=""
+                    className="hero-video-fallback"
+                    style={{ display: reduced ? "block" : "none" }}
+                    aria-hidden="true"
+                />
+                <div className="hero-vignette" />
+
+                {/* Static wordmark overlay (never animates). Positioned as a
+                    percentage of the media wrapper so it always sits over
+                    the video's centre — no matter whether the wrapper is
+                    the full section (desktop) or a 16:9 responsive block
+                    (mobile). */}
+                <div
+                    data-testid="hero-wordmark"
+                    className="hero-wordmark-wrap pointer-events-none"
+                    style={{
+                        position: "absolute",
+                        top: "50%",
+                        left: "50%",
+                        transform: "translate(-50%, -50%)",
+                        width: "min(760px, max(48vw, 62vh))",
+                        height: "min(130px, max(8.5vh, 6.4vw))",
+                        background:
+                            "radial-gradient(ellipse 55% 50% at 50% 50%, #000 45%, rgba(0,0,0,0.95) 60%, rgba(0,0,0,0.6) 78%, rgba(0,0,0,0) 100%)",
+                        display: "flex",
+                        alignItems: "center",
+                        justifyContent: "center",
+                        zIndex: 2,
+                    }}
+                >
+                    <img
+                        src="/assets/wordmark.webp"
+                        alt="RESXPECT"
+                        style={{
+                            width: "min(460px, max(31vw, 40vh))",
+                            height: "auto",
+                            display: "block",
+                            objectFit: "contain",
+                        }}
+                    />
+                </div>
+            </div>
+
+            {/* Content — supporting line + CTAs anchored below the wordmark */}
+            <div className="relative z-10 max-w-[1360px] mx-auto px-6 lg:px-10 h-full flex flex-col hero-content-wrap">
+                <div className="h-[100px] lg:h-[120px] hero-top-spacer" />
+                <div className="hero-content flex-1 flex flex-col items-center justify-end pb-16 lg:pb-24 text-center">
+                    <p
+                        className="fade-up"
+                        data-testid="hero-supporting-line"
+                        style={{
+                            color: "#ffffff",
+                            fontWeight: 500,
+                            fontSize: "clamp(15px, 1.35vw, 19px)",
+                            letterSpacing: "-0.005em",
+                            marginBottom: 22,
+                            textShadow: "0 2px 14px rgba(0,0,0,0.5)",
+                        }}
+                    >
+                        Different people. One protected agreement.
+                    </p>
+
+                    <div className="flex justify-center fade-up">
+                        <a data-testid="hero-cta-secondary" href="#how" className="btn-ghost-light hero-cta-secondary">
+                            How It Works
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </section>
+    );
+};
+
+export default Hero;
