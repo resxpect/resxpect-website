@@ -86,6 +86,8 @@ const Nav = () => {
                         data-testid="nav-create-agreement"
                         className="btn-primary nav-cta"
                         style={{
+                            background: "#173B6D",
+                            color: "#FFFFFF",
                             padding: "11px 18px",
                             fontSize: 13.5,
                         }}
