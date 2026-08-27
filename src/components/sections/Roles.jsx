@@ -16,8 +16,8 @@ const roles = [
     {
         name: "Validator",
         color: "validator",
-        body: "Reviews disputed evidence and helps determine fair outcomes.",
-        verbs: ["Reviews cases", "Weighs evidence", "Issues fair outcomes"],
+        body: "Protects the network, and helps determine fair outcomes.",
+        verbs: ["Protects the network", "Review cases", "Issues fair outcomes"],
     },
 ];
 
