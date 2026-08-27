@@ -196,100 +196,317 @@ html, body {
     .hero-root {
         display: flex !important;
         flex-direction: column !important;
+
+        width: 100% !important;
+        max-width: 100vw !important;
+
         height: auto !important;
         min-height: 100svh !important;
         max-height: none !important;
-        width: 100% !important;
-        max-width: 100vw !important;
-        overflow-x: hidden !important;
-        padding-bottom: 40px !important;
+
+        overflow: hidden !important;
+        padding-bottom: 42px !important;
+
+        background: #000 !important;
+        border: 0 !important;
     }
-    .hero-content-wrap {
-        flex: 1 !important;
-        height: auto !important;
-        display: flex !important;
-        flex-direction: column !important;
-        justify-content: center !important;
-    }
+
+    /*
+     * Mobile portrait media area.
+     * Controls the video only.
+     */
     .hero-media-wrap {
         position: relative !important;
+        inset: auto !important;
+        flex: none !important;
+
         width: 100% !important;
         max-width: 100vw !important;
-        aspect-ratio: 4 / 3 !important;
-        overflow: hidden !important;
-        background: #000 !important;
-        margin-top: 60px !important;
-        inset: auto !important;
+        height: clamp(470px, 58svh, 630px) !important;
         min-height: 0 !important;
-        height: auto !important;
-        flex: none !important;
+
+        margin-top: 60px !important;
+        margin-bottom: -2px !important;
+
+        overflow: hidden !important;
+
+        background: #000 !important;
+        border: 0 !important;
+        outline: 0 !important;
+        box-shadow: none !important;
     }
-    .hero-video,
-    .hero-video-fallback {
-        position: static !important;
-        inset: auto !important;
-        top: auto !important;
-        left: auto !important;
+
+    .hero-video-desktop {
+        display: none !important;
+    }
+
+    .hero-mobile-video-stage {
+        position: absolute;
+        inset: 0;
+
+        overflow: hidden;
+
+        background: #000;
+        border: 0;
+        outline: 0;
+        box-shadow: none;
+
+        opacity: 1;
+        transition: opacity 450ms ease;
+    }
+
+    .hero-mobile-video-stage.is-changing-role {
+        opacity: 0;
+    }
+
+    /*
+     * Existing landscape video enlarged proportionally.
+     * Cropped, never stretched.
+     */
+    .hero-video-mobile {
+        position: absolute !important;
+        top: 50% !important;
+
+        width: auto !important;
+        max-width: none !important;
+        height: 100% !important;
+
+        display: block !important;
+        object-fit: contain !important;
+
+        margin: 0 !important;
+        padding: 0 !important;
+
+        background: #000 !important;
+        border: 0 !important;
+        outline: 0 !important;
+        box-shadow: none !important;
+
+        transform: translateY(-50%) !important;
+    }
+
+    /*
+     * Creator: reveal orange left side.
+     */
+    .hero-mobile-creator .hero-video-mobile {
+        left: 0 !important;
         right: auto !important;
-        bottom: auto !important;
+    }
+
+    /*
+     * Runner: reveal blue right side.
+     */
+    .hero-mobile-runner .hero-video-mobile {
+        left: auto !important;
+        right: 0 !important;
+    }
+
+    .hero-video-fallback {
+        position: absolute !important;
+        inset: 0 !important;
+
         width: 100% !important;
         height: 100% !important;
-        max-width: 100% !important;
-        object-fit: contain !important;
-        object-position: center center !important;
+
+        object-fit: cover !important;
+        object-position: left center !important;
+
+        margin: 0 !important;
+        padding: 0 !important;
+
+        background: #000 !important;
+        border: 0 !important;
+        outline: 0 !important;
+        box-shadow: none !important;
+
         transform: none !important;
-        display: block !important;
     }
+
     .hero-vignette {
         display: none !important;
     }
-    .hero-wordmark-wrap {
-        position: absolute !important;
-        top: 50% !important;
-        left: 50% !important;
-        bottom: auto !important;
-        right: auto !important;
-        margin: 0 !important;
-        transform: translate(-50%, -50%) !important;
-        width: min(256px, 51vw) !important;
-        height: min(63px, 12vw) !important;
+
+    /*
+     * Desktop wordmark hidden on mobile.
+     */
+    .hero-wordmark-desktop {
+        display: none !important;
     }
-    .hero-wordmark-wrap img {
-        width: min(170px, 34vw) !important;
+
+    /*
+     * Content area overlaps the media by 2px.
+     * This removes the faint rendering seam.
+     */
+    .hero-content-wrap {
+        position: relative !important;
+        z-index: 3 !important;
+        flex: 1 !important;
+
+        width: 100% !important;
+        height: auto !important;
+
+        display: flex !important;
+        flex-direction: column !important;
+        justify-content: flex-start !important;
+
+        margin-top: -2px !important;
+
+        padding-left: 20px !important;
+        padding-right: 20px !important;
+
+        background: #000 !important;
+        border: 0 !important;
+        outline: 0 !important;
+        box-shadow: none !important;
     }
+
+    .hero-top-spacer {
+        display: none !important;
+    }
+
     .hero-content {
         flex: none !important;
-        justify-content: center !important;
-        padding-top: 0 !important;
+
+        justify-content: flex-start !important;
+        align-items: center !important;
+
+        padding-top: 10px !important;
         padding-bottom: 0 !important;
+
+        margin: 0 !important;
+
+        background: #000 !important;
+        border: 0 !important;
+        outline: 0 !important;
+        box-shadow: none !important;
     }
-    .hero-top-spacer { display: none !important; }
-    .hero-cta-primary,
+
+    /*
+     * Mobile-only RESXPECT wordmark.
+     * Positioned directly above the white supporting text.
+     */
+    .hero-wordmark-mobile {
+        display: flex !important;
+        align-items: center !important;
+        justify-content: center !important;
+
+        width: 100% !important;
+        height: 58px !important;
+
+        margin: 0 0 12px 0 !important;
+        padding: 0 !important;
+
+        background: #000 !important;
+        border: 0 !important;
+        outline: 0 !important;
+        box-shadow: none !important;
+    }
+
+    .hero-wordmark-mobile img {
+        display: block !important;
+
+        width: min(188px, 48vw) !important;
+        height: auto !important;
+        max-height: 52px !important;
+
+        object-fit: contain !important;
+
+        margin: 0 !important;
+        padding: 0 !important;
+
+        border: 0 !important;
+        outline: 0 !important;
+        box-shadow: none !important;
+    }
+
+    /*
+     * Raise only the white supporting text.
+     */
+    .hero-content p {
+        width: 100% !important;
+
+        margin-top: 0 !important;
+        margin-bottom: 24px !important;
+
+        font-size: clamp(15px, 4vw, 18px) !important;
+        line-height: 1.35 !important;
+        white-space: normal !important;
+
+        background: #000 !important;
+        border: 0 !important;
+
+        transform: translateY(-10px) !important;
+    }
+
+    /*
+     * Raise only the button wrapper.
+     * The RESXPECT wordmark stays fixed.
+     */
+    .hero-content > div:last-child {
+        transform: translateY(-10px) !important;
+    }
+
     .hero-cta-secondary {
-        padding: 11px 18px !important;
-        font-size: 13.5px !important;
+        min-width: 210px;
+        justify-content: center;
+
+        padding: 13px 22px !important;
+        font-size: 14px !important;
     }
-    /* Mobile navigation — smaller logo + smaller CTA */
-    .nav-brand img { height: 24px !important; }
+
+    /* Mobile navigation */
+    .nav-brand img {
+        height: 24px !important;
+    }
+
     .nav-brand span {
         font-size: 15px !important;
     }
-    .nav-brand > div { gap: 8px !important; }
+
+    .nav-brand > div {
+        gap: 8px !important;
+    }
+
     .nav-cta {
         padding: 8px 12px !important;
         font-size: 12px !important;
         border-radius: 8px !important;
     }
 }
-.hero-vignette {
-    position: absolute; inset: 0; z-index: 1;
-    background:
-        linear-gradient(180deg, rgba(10,10,11,0.55) 0%, rgba(10,10,11,0.20) 30%, rgba(10,10,11,0.20) 65%, rgba(10,10,11,0.80) 100%),
-        radial-gradient(80% 60% at 50% 50%, rgba(10,10,11,0) 30%, rgba(10,10,11,0.35) 100%);
-    pointer-events: none;
-}
 
 @media (prefers-reduced-motion: reduce) {
     .hero-video { display: none; }
     .hero-video-fallback { display: block !important; }
+}
+
+/* Slightly soften desktop hero video only */
+@media (min-width: 768px) {
+    .hero-video-desktop {
+        filter: contrast(0.92) saturate(0.98) brightness(0.6);
+    }
+}
+
+@media (max-width: 767px) {
+    .hero-mobile-video-stage.hero-mobile-runner::after {
+        content: "";
+        position: absolute;
+        z-index: 3;
+        pointer-events: none;
+
+        right: -2%;
+        bottom: 4%;
+        width: 46%;
+        height: 44%;
+
+        background: radial-gradient(
+            ellipse at 78% 58%,
+            rgba(0, 0, 0, 0.72) 0%,
+            rgba(0, 0, 0, 0.58) 38%,
+            rgba(0, 0, 0, 0.28) 68%,
+            rgba(0, 0, 0, 0) 100%
+        );
+
+        filter: blur(16px);
+        transform: scale(1.12);
+    }
 }

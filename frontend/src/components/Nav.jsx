@@ -2,9 +2,9 @@ import React, { useEffect, useState } from "react";
 import Logo from "./Logo";
 
 const links = [
+    { label: "Why RESXPECT", href: "#problem" },
     { label: "How It Works", href: "#how" },
     { label: "Roles", href: "#roles" },
-    { label: "Why RESXPECT", href: "#why" },
 ];
 
 const Nav = () => {
@@ -51,7 +51,7 @@ const Nav = () => {
                         Sign in
                     </a>
                     <a href="#create" data-testid="nav-create-agreement" className="btn-primary nav-cta" style={{ padding: "11px 18px", fontSize: 13.5 }}>
-                        Create Agreement
+                        Join Early Access
                     </a>
                 </div>
             </div>

@@ -70,6 +70,33 @@ const Hero = () => {
         playVideo();
     }, [reduced, isMobile]);
 
+    useEffect(() => {
+        const video = mobileVideoRef.current;
+
+        if (!video || reduced || !isMobile) return;
+
+        video.muted = true;
+        video.defaultMuted = true;
+        video.playsInline = true;
+        video.setAttribute("playsinline", "");
+        video.setAttribute("webkit-playsinline", "");
+
+        const playVideo = () => {
+            const playPromise = video.play();
+
+            if (playPromise?.catch) {
+                playPromise.catch(() => {
+                    // iOS may reject until the video is ready.
+                });
+            }
+        };
+
+        playVideo();
+        video.addEventListener("canplay", playVideo, { once: true });
+
+        return () => video.removeEventListener("canplay", playVideo);
+    }, [reduced, isMobile]);
+
     /*
      * Manually loop Hero 9 shortly before it reaches the final frame.
      * This avoids the video stopping or displaying a black end frame.
@@ -197,6 +224,7 @@ const Hero = () => {
                             poster="/assets/hero-poster.jpg"
                             autoPlay
                             muted
+                            defaultMuted
                             playsInline
                             preload="auto"
                             onEnded={handleMobileVideoEnd}

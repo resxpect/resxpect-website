@@ -2,7 +2,9 @@ import React from "react";
 import "@/App.css";
 import Nav from "@/components/Nav";
 import Hero from "@/components/sections/Hero";
+import TheProblem from "./components/sections/TheProblem";
 import HowItWorks from "@/components/sections/HowItWorks";
+import AgreementOutcome from "./components/sections/AgreementOutcome";
 import WhyResxpect from "@/components/sections/WhyResxpect";
 import Roles from "@/components/sections/Roles";
 import GlobalMessage from "@/components/sections/GlobalMessage";
@@ -14,8 +16,9 @@ function App() {
             <Nav />
             <main>
                 <Hero />
+                <TheProblem />
                 <HowItWorks />
-                <WhyResxpect />
+                <AgreementOutcome />
                 <Roles />
                 <GlobalMessage />
                 <FinalCTA />

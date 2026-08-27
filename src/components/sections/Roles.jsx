@@ -45,9 +45,9 @@ const Roles = () => {
                             margin: 0,
                         }}
                     >
-                        Same identity. Different{" "}
+                        One identity. Different{" "}
                         <span style={{ color: "var(--runner)" }}>
-                            perspectives
+                            roles
                         </span>
                         .
                     </h2>

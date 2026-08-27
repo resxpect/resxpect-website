@@ -62,9 +62,8 @@ const FinalCTA = () => {
                                 marginRight: "auto",
                             }}
                         >
-                            Start with one small agreement. Learn how the
-                            protection, evidence and reputation build up around
-                            real work.
+                            Start with one small agreement. See how the
+                            protection, evidence and reputation come together around real work.
                         </p>
 
                         <a
@@ -72,7 +71,7 @@ const FinalCTA = () => {
                             href="#create"
                             className="btn-primary"
                         >
-                            Create your first agreement
+                            Join Early Access
                             <span aria-hidden="true">→</span>
                         </a>
                     </div>

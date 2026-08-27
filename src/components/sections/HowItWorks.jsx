@@ -4,7 +4,7 @@ const steps = [
     {
         n: "01",
         title: "Commit",
-        body: "Both parties accept clear terms and committed funds are protected.",
+        body: "Both parties accept clear terms, and the funds are protected.",
         color: "creator",
         icon: (
             <svg
@@ -25,7 +25,7 @@ const steps = [
     {
         n: "02",
         title: "Deliver",
-        body: "Work and supporting evidence remain connected to the agreement.",
+        body: "The work is delivered, and supporting evidence remains connected to the agreement.",
         color: "runner",
         icon: (
             <svg
@@ -46,7 +46,7 @@ const steps = [
     {
         n: "03",
         title: "Verify",
-        body: "The outcome becomes part of a clear, verifiable agreement history.",
+        body: "The outcome is reviewed and becomes part of a verifiable work history.",
         color: "validator",
         icon: (
             <svg
@@ -108,8 +108,8 @@ const HowItWorks = () => {
                             marginRight: "auto",
                         }}
                     >
-                        Create clear agreements, protect committed funds and
-                        build a verifiable record of completed work.
+                        Create clear agreements, protect the funds and
+                        build a verifiable record of the outcome.
                     </p>
                 </div>
 
