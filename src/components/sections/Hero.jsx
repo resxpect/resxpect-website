@@ -298,7 +298,7 @@ const Hero = () => {
                         className="fade-up"
                         data-testid="hero-supporting-line"
                         style={{
-                            color: "#ffffff",
+                            color: "var(--validator)",
                             fontWeight: 500,
                             fontSize: "clamp(15px, 1.35vw, 19px)",
                             letterSpacing: "-0.005em",
