@@ -11,7 +11,7 @@ const Logo = ({
     withWordmark = true,
     tone = "ink",
 }) => {
-    const wordColor = tone === "validator" ? "var(--validator)" : tone === "light" ? "#ffffff" : "var(--ink)";
+    const wordColor = tone === "light" ? "#ffffff" : "var(--ink)";
     return (
         <div
             className={`inline-flex items-center ${className}`}

@@ -48,7 +48,7 @@ const Nav = () => {
                         markHeight={30}
                         wordmarkSize={18}
                         gap={12}
-                        tone="validator"
+                        tone={dark ? "light" : "ink"}
                     />
                 </a>
 
