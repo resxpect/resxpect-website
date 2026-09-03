@@ -25,7 +25,7 @@ const FinalCTA = () => {
                         <h2
                             className="font-display mb-6"
                             style={{
-                                fontSize: "clamp(30px, 4.2vw, 56px)",
+                                fontSize: "clamp(27px, 3.6vw, 48px)",
                                 lineHeight: 1.04,
                                 letterSpacing: "-0.025em",
                                 color: "var(--ink)",
