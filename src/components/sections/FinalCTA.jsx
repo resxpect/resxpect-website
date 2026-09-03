@@ -8,8 +8,8 @@ const FinalCTA = () => {
             data-testid="final-cta-section"
             className="section-white"
         >
-            <div className="max-w-[1360px] mx-auto px-6 lg:px-10 py-14 lg:py-20">
-                <div className="card px-8 lg:px-16 pt-10 pb-16 lg:pt-13 lg:pb-20 text-center relative overflow-hidden">
+            <div className="max-w-[1360px] mx-auto px-6 lg:px-10 pt-8 pb-14 lg:pt-10 lg:pb-20">
+                <div className="card px-8 lg:px-16 py-12 lg:py-14 text-center relative overflow-hidden">
                     {/* Multi-colour soft glow */}
                     <div
                         className="absolute inset-0 pointer-events-none"
@@ -21,12 +21,7 @@ const FinalCTA = () => {
                         }}
                     />
 
-                    <div
-                        className="relative z-10 max-w-[820px] mx-auto"
-                        style={{
-                            transform: "translateY(-18px)",
-                        }}
-                    >
+                    <div className="relative z-10 max-w-[820px] mx-auto">
                         <h2
                             className="font-display mb-6"
                             style={{
