@@ -19,7 +19,7 @@ const TheProblem = () => {
                         <h2
                             className="font-display"
                             style={{
-                                fontSize: "clamp(31px, 8.7vw, 46px)",
+                                fontSize: "clamp(29px, 7.9vw, 42px)",
                                 lineHeight: 1.08,
                                 letterSpacing: "-0.03em",
                                 color: "var(--ink)",
