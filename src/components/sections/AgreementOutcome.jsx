@@ -27,7 +27,7 @@ const AgreementOutcome = () => {
                     <h2
                         className="font-display agreement-outcome-heading"
                         style={{
-                            fontSize: "clamp(32px, 4.2vw, 56px)",
+                            fontSize: "clamp(30px, 3.8vw, 52px)",
                             lineHeight: 1.08,
                             letterSpacing: "-0.025em",
                             color: "var(--ink)",
@@ -137,7 +137,7 @@ const AgreementOutcome = () => {
                     }
 
                     .agreement-outcome-heading {
-                        font-size: clamp(28px, 9vw, 38px) !important;
+                        font-size: clamp(26px, 8.2vw, 35px) !important;
                         line-height: 1.1 !important;
                         max-width: 340px !important;
                     }
