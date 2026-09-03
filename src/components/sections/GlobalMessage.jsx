@@ -47,7 +47,7 @@ const GlobalMessage = () => {
                     <h2
                         className="font-display"
                         style={{
-                            fontSize: "clamp(28px, 3.8vw, 54px)",
+                            fontSize: "clamp(26px, 3.4vw, 48px)",
                             lineHeight: 1.08,
                             letterSpacing: "-0.025em",
                             color: "var(--ink)",
