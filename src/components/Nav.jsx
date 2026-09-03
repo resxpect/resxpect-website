@@ -82,7 +82,7 @@ const Nav = () => {
                     </a>
 
                     <a
-                        href="#create"
+                        href="/discord"
                         data-testid="nav-create-agreement"
                         className="btn-primary nav-cta"
                         style={{
