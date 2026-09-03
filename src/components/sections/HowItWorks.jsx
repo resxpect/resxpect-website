@@ -82,7 +82,7 @@ const HowItWorks = () => {
                     <h2
                         className="font-display"
                         style={{
-                            fontSize: "clamp(32px, 4.4vw, 56px)",
+                            fontSize: "clamp(30px, 3.8vw, 52px)",
                             lineHeight: 1.08,
                             letterSpacing: "-0.025em",
                             color: "var(--ink)",
