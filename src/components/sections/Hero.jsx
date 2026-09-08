@@ -258,8 +258,6 @@ const Hero = () => {
                             transform: "translate(-50%, -50%)",
                             width: "min(760px, max(48vw, 62vh))",
                             height: "min(130px, max(8.5vh, 6.4vw))",
-                            background:
-                                "radial-gradient(ellipse 55% 50% at 50% 50%, #fff 45%, rgba(255,255,255,0.95) 60%, rgba(255,255,255,0.6) 78%, rgba(255,255,255,0) 100%)",
                             display: "flex",
                             alignItems: "center",
                             justifyContent: "center",
@@ -267,7 +265,7 @@ const Hero = () => {
                         }}
                     >
                         <img
-                            src="/assets/wordmark.webp"
+                            src="/assets/resxpect-wordmark.png"
                             alt="RESXPECT"
                             style={{
                                 width: "min(460px, max(31vw, 40vh))",
@@ -288,7 +286,7 @@ const Hero = () => {
                     {isMobile && (
                         <div className="hero-wordmark-mobile pointer-events-none">
                             <img
-                                src="/assets/wordmark.webp"
+                                src="/assets/resxpect-wordmark.png"
                                 alt="RESXPECT"
                             />
                         </div>
