@@ -482,8 +482,24 @@ html, body {
 
 /* Slightly soften desktop hero video only */
 @media (min-width: 768px) {
+    .hero-root {
+        height: min(56.25vw, 900px) !important;
+        min-height: 0 !important;
+        max-height: 900px !important;
+    }
+
     .hero-video-desktop {
         filter: none;
+    }
+
+    .hero-vignette {
+        position: absolute;
+        inset: 0;
+        z-index: 1;
+        pointer-events: none;
+        background:
+            radial-gradient(ellipse 18% 30% at 8% 78%, rgba(15, 22, 30, 0.18) 0%, rgba(15, 22, 30, 0.08) 42%, rgba(15, 22, 30, 0) 76%),
+            radial-gradient(ellipse 18% 30% at 92% 78%, rgba(15, 22, 30, 0.18) 0%, rgba(15, 22, 30, 0.08) 42%, rgba(15, 22, 30, 0) 76%);
     }
 }
 
