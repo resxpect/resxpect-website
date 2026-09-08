@@ -98,7 +98,7 @@ const Hero = () => {
     }, [reduced, isMobile]);
 
     /*
-     * Manually loop Hero 9 shortly before it reaches the final frame.
+     * Manually loop the hero video shortly before it reaches the final frame.
      * This avoids the video stopping or displaying a black end frame.
      */
     const handleDesktopTimeUpdate = () => {
@@ -144,9 +144,9 @@ const Hero = () => {
         const video = desktopVideoRef.current;
 
         console.error(
-            "Hero 9 failed to load.",
+            "Hero video failed to load.",
             video?.error,
-            "Check that the file exists at public/assets/hero9.mp4"
+            "Check that the file exists at public/assets/Herow-web.mp4"
         );
     };
 
@@ -187,18 +187,18 @@ const Hero = () => {
                 minHeight: "min(100vh, 900px)",
                 height: "100vh",
                 maxHeight: 940,
-                background: "#000",
+                background: "#fff",
             }}
         >
             <div className="hero-media-wrap">
-                {/* Desktop video: Hero 9 */}
+                {/* Desktop video */}
                 {!reduced && !isMobile && (
                     <video
                         key="desktop-hero9"
                         ref={desktopVideoRef}
                         className="hero-video hero-video-desktop"
-                        src="/assets/hero9.mp4"
-                        poster="/assets/hero-poster.jpg"
+                        src="/assets/Herow-web.mp4"
+                        poster="/assets/hero-white-poster.png"
                         autoPlay
                         muted
                         playsInline
@@ -220,8 +220,8 @@ const Hero = () => {
                         <video
                             ref={mobileVideoRef}
                             className="hero-video hero-video-mobile"
-                            src="/assets/hero.mp4"
-                            poster="/assets/hero-poster.jpg"
+                            src="/assets/Herow-web.mp4"
+                            poster="/assets/hero-white-poster.png"
                             autoPlay
                             muted
                             defaultMuted
@@ -235,7 +235,7 @@ const Hero = () => {
 
                 {/* Reduced-motion fallback */}
                 <img
-                    src="/assets/hero-poster.jpg"
+                    src="/assets/hero-white-poster.png"
                     alt=""
                     className="hero-video-fallback"
                     style={{
@@ -259,7 +259,7 @@ const Hero = () => {
                             width: "min(760px, max(48vw, 62vh))",
                             height: "min(130px, max(8.5vh, 6.4vw))",
                             background:
-                                "radial-gradient(ellipse 55% 50% at 50% 50%, #000 45%, rgba(0,0,0,0.95) 60%, rgba(0,0,0,0.6) 78%, rgba(0,0,0,0) 100%)",
+                                "radial-gradient(ellipse 55% 50% at 50% 50%, #fff 45%, rgba(255,255,255,0.95) 60%, rgba(255,255,255,0.6) 78%, rgba(255,255,255,0) 100%)",
                             display: "flex",
                             alignItems: "center",
                             justifyContent: "center",
@@ -298,7 +298,7 @@ const Hero = () => {
                         className="fade-up"
                         data-testid="hero-supporting-line"
                         style={{
-                            color: "#ffffff",
+                            color: "var(--ink)",
                             fontWeight: 500,
                             fontSize: "clamp(15px, 1.35vw, 19px)",
                             letterSpacing: "-0.005em",
@@ -314,6 +314,11 @@ const Hero = () => {
                             data-testid="hero-cta-secondary"
                             href="#how"
                             className="btn-ghost-light hero-cta-secondary"
+                            style={{
+                                background: "rgba(14,14,16,0.04)",
+                                color: "var(--ink)",
+                                borderColor: "var(--line-strong)",
+                            }}
                         >
                             How It Works
                         </a>

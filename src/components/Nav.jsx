@@ -17,7 +17,7 @@ const Nav = () => {
         return () => window.removeEventListener("scroll", onScroll);
     }, []);
 
-    const dark = !scrolled; // transparent over hero video → white text
+    const dark = false; // transparent over the white hero → dark text
 
     return (
         <nav
