@@ -220,7 +220,7 @@ const Hero = () => {
                         <video
                             ref={mobileVideoRef}
                             className="hero-video hero-video-mobile"
-                            src="/assets/Herow-web.mp4"
+                            src="/assets/Herow-mobile-web.mp4"
                             poster="/assets/hero-white-poster.png"
                             autoPlay
                             muted
