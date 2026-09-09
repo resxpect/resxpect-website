@@ -146,7 +146,7 @@ const Hero = () => {
         console.error(
             "Hero video failed to load.",
             video?.error,
-            "Check that the file exists at public/assets/Herow.mp4"
+            "Check that the file exists at public/assets/Herow-web.mp4"
         );
     };
 
@@ -197,7 +197,7 @@ const Hero = () => {
                         key="desktop-hero9"
                         ref={desktopVideoRef}
                         className="hero-video hero-video-desktop"
-                        src="/assets/Herow.mp4"
+                        src="/assets/Herow-web.mp4"
                         poster="/assets/hero-white-poster.png"
                         autoPlay
                         muted
@@ -220,7 +220,7 @@ const Hero = () => {
                         <video
                             ref={mobileVideoRef}
                             className="hero-video hero-video-mobile"
-                            src="/assets/Herow.mp4"
+                            src="/assets/Herow-web.mp4"
                             poster="/assets/hero-white-poster.png"
                             autoPlay
                             muted
@@ -268,7 +268,7 @@ const Hero = () => {
                             src="/assets/resxpect-wordmark.png"
                             alt="RESXPECT"
                             style={{
-                                width: "min(460px, max(31vw, 40vh))",
+                                width: "min(440px, max(29.7vw, 38.3vh))",
                                 height: "auto",
                                 display: "block",
                                 objectFit: "contain",

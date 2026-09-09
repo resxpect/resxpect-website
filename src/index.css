@@ -406,9 +406,9 @@ html, body {
     .hero-wordmark-mobile img {
         display: block !important;
 
-        width: min(188px, 48vw) !important;
+        width: min(180px, 46vw) !important;
         height: auto !important;
-        max-height: 52px !important;
+        max-height: 50px !important;
 
         object-fit: contain !important;
 
