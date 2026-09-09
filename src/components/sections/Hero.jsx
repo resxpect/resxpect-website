@@ -1,4 +1,5 @@
 import React, { useEffect, useRef, useState } from "react";
+import { flushSync } from "react-dom";
 
 const MOBILE_BREAKPOINT = 767;
 
@@ -15,7 +16,6 @@ const Hero = () => {
     );
 
     const [mobileRole, setMobileRole] = useState("creator");
-    const [roleChanging, setRoleChanging] = useState(false);
 
     useEffect(() => {
         const motionQuery = window.matchMedia(
@@ -155,27 +155,21 @@ const Hero = () => {
 
         if (!video) return;
 
-        setRoleChanging(true);
-
-        window.setTimeout(() => {
+        flushSync(() => {
             setMobileRole((currentRole) =>
                 currentRole === "creator" ? "runner" : "creator"
             );
+        });
 
-            video.currentTime = 0;
+        video.currentTime = 0;
 
-            const playPromise = video.play();
+        const playPromise = video.play();
 
-            if (playPromise?.catch) {
-                playPromise.catch(() => {
-                    // Some mobile browsers may briefly block playback.
-                });
-            }
-
-            window.setTimeout(() => {
-                setRoleChanging(false);
-            }, 80);
-        }, 450);
+        if (playPromise?.catch) {
+            playPromise.catch(() => {
+                // Some mobile browsers may briefly block playback.
+            });
+        }
     };
 
     return (
@@ -213,9 +207,7 @@ const Hero = () => {
                 {/* Mobile Creator / Runner crop: original video */}
                 {!reduced && isMobile && (
                     <div
-                        className={`hero-mobile-video-stage hero-mobile-${mobileRole} ${
-                            roleChanging ? "is-changing-role" : ""
-                        }`}
+                        className={`hero-mobile-video-stage hero-mobile-${mobileRole}`}
                     >
                         <video
                             ref={mobileVideoRef}
