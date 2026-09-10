@@ -1,11 +1,12 @@
 import React, { useEffect, useRef, useState } from "react";
-import { flushSync } from "react-dom";
 
 const MOBILE_BREAKPOINT = 767;
+const MOBILE_LOOP_CROSSFADE_SECONDS = 3;
 
 const Hero = () => {
     const desktopVideoRef = useRef(null);
-    const mobileVideoRef = useRef(null);
+    const mobileVideoRefs = useRef([]);
+    const mobileCrossfadingRef = useRef(false);
 
     const [reduced, setReduced] = useState(false);
 
@@ -15,7 +16,8 @@ const Hero = () => {
             : false
     );
 
-    const [mobileRole, setMobileRole] = useState("creator");
+    const [activeMobileLayer, setActiveMobileLayer] = useState(0);
+    const [crossfadeFromLayer, setCrossfadeFromLayer] = useState(null);
 
     useEffect(() => {
         const motionQuery = window.matchMedia(
@@ -71,18 +73,23 @@ const Hero = () => {
     }, [reduced, isMobile]);
 
     useEffect(() => {
-        const video = mobileVideoRef.current;
+        const videos = mobileVideoRefs.current.filter(Boolean);
 
-        if (!video || reduced || !isMobile) return;
+        if (!videos.length || reduced || !isMobile) return;
 
-        video.muted = true;
-        video.defaultMuted = true;
-        video.playsInline = true;
-        video.setAttribute("playsinline", "");
-        video.setAttribute("webkit-playsinline", "");
+        videos.forEach((video, index) => {
+            video.muted = true;
+            video.defaultMuted = true;
+            video.playsInline = true;
+            video.setAttribute("playsinline", "");
+            video.setAttribute("webkit-playsinline", "");
+            video.currentTime = 0;
+
+            if (index !== 0) video.pause();
+        });
 
         const playVideo = () => {
-            const playPromise = video.play();
+            const playPromise = videos[0].play();
 
             if (playPromise?.catch) {
                 playPromise.catch(() => {
@@ -92,9 +99,9 @@ const Hero = () => {
         };
 
         playVideo();
-        video.addEventListener("canplay", playVideo, { once: true });
+        videos[0].addEventListener("canplay", playVideo, { once: true });
 
-        return () => video.removeEventListener("canplay", playVideo);
+        return () => videos[0].removeEventListener("canplay", playVideo);
     }, [reduced, isMobile]);
 
     /*
@@ -150,26 +157,46 @@ const Hero = () => {
         );
     };
 
-    const handleMobileVideoEnd = () => {
-        const video = mobileVideoRef.current;
+    const handleMobileTimeUpdate = (layerIndex) => {
+        const video = mobileVideoRefs.current[layerIndex];
 
-        if (!video) return;
+        if (
+            !video ||
+            layerIndex !== activeMobileLayer ||
+            mobileCrossfadingRef.current ||
+            !Number.isFinite(video.duration) ||
+            video.currentTime < video.duration - MOBILE_LOOP_CROSSFADE_SECONDS
+        ) return;
 
-        flushSync(() => {
-            setMobileRole((currentRole) =>
-                currentRole === "creator" ? "runner" : "creator"
-            );
-        });
+        const nextLayer = layerIndex === 0 ? 1 : 0;
+        const nextVideo = mobileVideoRefs.current[nextLayer];
 
-        video.currentTime = 0;
+        if (!nextVideo) return;
 
-        const playPromise = video.play();
+        mobileCrossfadingRef.current = true;
+        nextVideo.currentTime = 0;
+        const playPromise = nextVideo.play();
 
         if (playPromise?.catch) {
             playPromise.catch(() => {
                 // Some mobile browsers may briefly block playback.
             });
         }
+
+        setCrossfadeFromLayer(layerIndex);
+        setActiveMobileLayer(nextLayer);
+    };
+
+    const handleMobileVideoEnd = (layerIndex) => {
+        if (layerIndex !== crossfadeFromLayer) return;
+
+        const video = mobileVideoRefs.current[layerIndex];
+
+        video?.pause();
+        if (video) video.currentTime = 0;
+
+        mobileCrossfadingRef.current = false;
+        setCrossfadeFromLayer(null);
     };
 
     return (
@@ -204,25 +231,39 @@ const Hero = () => {
                     />
                 )}
 
-                {/* Mobile Creator / Runner crop: original video */}
+                {/* Mobile Creator / Runner crops crossfade independently. */}
                 {!reduced && isMobile && (
-                    <div
-                        className={`hero-mobile-video-stage hero-mobile-${mobileRole}`}
-                    >
-                        <video
-                            ref={mobileVideoRef}
-                            className="hero-video hero-video-mobile"
-                            src="/assets/Herow-mobile-web.mp4"
-                            poster="/assets/hero-white-poster.png"
-                            autoPlay
-                            muted
-                            defaultMuted
-                            playsInline
-                            preload="auto"
-                            onEnded={handleMobileVideoEnd}
-                            aria-hidden="true"
-                        />
-                    </div>
+                    <>
+                        {["creator", "runner"].map((role, layerIndex) => (
+                            <div
+                                key={role}
+                                className={`hero-mobile-video-stage hero-mobile-${role} ${
+                                    activeMobileLayer === layerIndex ? "is-active" : ""
+                                } ${
+                                    crossfadeFromLayer === layerIndex
+                                        ? "is-crossfade-out"
+                                        : ""
+                                }`}
+                            >
+                                <video
+                                    ref={(video) => {
+                                        mobileVideoRefs.current[layerIndex] = video;
+                                    }}
+                                    className="hero-video hero-video-mobile"
+                                    src="/assets/Herow-mobile-source.mp4"
+                                    poster="/assets/hero-white-poster.png"
+                                    autoPlay={layerIndex === 0}
+                                    muted
+                                    defaultMuted
+                                    playsInline
+                                    preload="auto"
+                                    onTimeUpdate={() => handleMobileTimeUpdate(layerIndex)}
+                                    onEnded={() => handleMobileVideoEnd(layerIndex)}
+                                    aria-hidden="true"
+                                />
+                            </div>
+                        ))}
+                    </>
                 )}
 
                 {/* Reduced-motion fallback */}

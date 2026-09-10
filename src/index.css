@@ -252,11 +252,17 @@ html, body {
         outline: 0;
         box-shadow: none;
 
-        opacity: 1;
-        transition: opacity 450ms ease;
+        opacity: 0;
+        transition: opacity 3s linear;
     }
 
-    .hero-mobile-video-stage.is-changing-role {
+    .hero-mobile-video-stage.is-active {
+        z-index: 2;
+        opacity: 1;
+    }
+
+    .hero-mobile-video-stage.is-crossfade-out {
+        z-index: 1;
         opacity: 0;
     }
 
